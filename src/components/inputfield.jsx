@@ -10,7 +10,7 @@ function Inputfield({
 }) {
 
       // Construct the input field class string conditionally
-  const inputClass = `w-full bg-white text-body-m p-4 border-b-2 text-black outline-none focus:border-b-white transition duration-300  `
+  const inputClass = `w-full bg-white text-body-m p-3 border border-1 border-black rounded-md text-black  focus:border-b-black transition duration-300  `
     
   
 

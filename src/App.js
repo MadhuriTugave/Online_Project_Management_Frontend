@@ -7,8 +7,12 @@ import ProjectList from './components/ProjectList';
 import DetailfillingForm from './components/DetailfillingForm';
 import SignUp from './components/SignUp';
 import { Toaster } from 'react-hot-toast';
+import { store } from './Redux/store';
+
+
 
 function App() {
+ console.log(store)
   return (
     <>
       <Toaster/>

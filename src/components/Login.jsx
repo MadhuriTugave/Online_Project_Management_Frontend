@@ -4,12 +4,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import logoTop from "../Images/Logo.jpg";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { SetUser } from "../Redux/Actions";
 // import bgImage from "../Images/login-bg-1.jpg"
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useDispatch();
   // Regex to validate the email address
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -21,13 +23,16 @@ function Login() {
 
   // Navigate to the dashboard if the user is already logged in
   useEffect(() => {
-    if (access_token) navigate("/");
+    if (access_token) navigate("/Dashboard");
   }, [access_token, navigate]);
+
+
 
   // Handle login
   const handleLogin = async (e) => {
     // Prevent the default form submission
     e.preventDefault();
+    // console.log(email , password)
 
     // Check if the email is empty
     if (email === "" && password === "") {
@@ -47,16 +52,17 @@ function Login() {
       } else {
         try {
           const response = await axios.post(
-            `http://localhost:3001/user/Login`,
+            `http://localhost:3001/User/Login`,
             { email, password }
           );
-          console.log(response);
+          console.log(response.data);
+          toast(response.data.message);
 
           // Set access token in local storage
           localStorage.setItem("access_token", response.data.access_token);
 
           // Fetch the user data
-          // dispatch(fetchUser());
+          dispatch(SetUser(response.data.user));
 
           // Navigate to the dashboard
           toast.success(response.data.message);
@@ -72,7 +78,8 @@ function Login() {
 
   // Navigate to Sign Up Page
   const handleSignupClick = () => {
-    navigate("/SignUP");
+ 
+    navigate("/SignUp");
   };
 
   return (

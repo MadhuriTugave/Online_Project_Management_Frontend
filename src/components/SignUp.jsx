@@ -22,7 +22,7 @@ function SignUp() {
 
   // Navigate to the dashboard if the user is already logged in
   useEffect(() => {
-    if (access_token) navigate("/");
+    if (access_token) navigate("/Dashboard");
   }, [access_token, navigate]);
 
   // Placeholder function to handle the Sign Up
@@ -50,14 +50,14 @@ function SignUp() {
         try {
           // Send the registration request
           const response = await axios.post(
-            `http://localhost:3001/user/SignUp`,
+            `http://localhost:3001/User/SignUp`,
             {
               email,
               password,
             }
           );
 
-          // console.log(response)
+          // console.log(response.data)
           //Set access token in local storage
           localStorage.setItem("access_token", response.data.access_token);
 
@@ -70,7 +70,11 @@ function SignUp() {
             navigate("/Dashboard");
           }, 2000);
         } catch (error) {
+          // console.log(error)
           toast.error(error.response.data.message);
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
         }
       }
     }

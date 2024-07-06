@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import { Navigate, NavLink, useLocation } from "react-router-dom";
+import {  NavLink, useLocation, useNavigate } from "react-router-dom";
  import logo  from "../Images/Dashboard-active.jpg";
  import ProjectList from "../Images/Project-list-active.jpg";
  import createProject from "../Images/image1.jpg"
  import profile  from "../Images/Logout (1).jpg"
+
+
 
 function Navbar() {
 
@@ -12,15 +14,18 @@ function Navbar() {
     const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
   
     const profileRef = useRef(null);
-  
+
+    const navigate = useNavigate();
+
     const { pathname } = useLocation();
     const location = pathname.split("/")[1];
 
     const access_token = localStorage.getItem("access_token");
 
     const handleLogout = () => {
-        // dispatch(clearUser());
-        Navigate("/");
+  ;
+        localStorage.removeItem("access_token")
+        navigate("/")
       };
       useEffect(() => {
         const calculatePopupPosition = () => {
@@ -52,7 +57,7 @@ function Navbar() {
       }, [showProfileOptions]);
   return (
     <>
-    <nav className="flex justify-between items-center p-4 lg:mt-1 bg-box-bg sm:w-[90%] sm:mx-auto sm:mt-4 sm:rounded-xl lg:max-w-20 lg:flex-col lg:fixed lg:inset-y-0 lg:left-0 lg:z-50  lg:rounded-xl bg-white box-shadow shadow hover:shadow-2xl">
+    <nav className="flex justify-between items-center p-3 lg:mt-0 bg-box-bg sm:w-[90%] sm:mx-auto sm:mt-4  sm:rounded-xl lg:max-w-20 lg:flex-col lg:fixed lg:inset-y-0 lg:left-0 lg:z-50  lg:rounded-xl bg-white box-shadow shadow hover:shadow-2xl">
    
       <div className="flex lg:flex-col lg:items-center lg:justify-center lg:flex-grow lg:mt-2 lg:mb-4">
         <NavLink
@@ -109,13 +114,13 @@ function Navbar() {
             <div className="text-white text-center">
               <button
                 className="bg-white-bg text-blue m-2 py-2 px-4 rounded hover:bg-white transition duration-300 hover:text-blue-500 box-shadow shadow"
-                onClick={() => Navigate("/")}
+                onClick={() => navigate("/")}
               >
                 Login
               </button>
               <button
                 className="bg-white-bg text-white m-2 py-2 px-4 rounded  hover:bg-white transition duration-300 hover:text-blue-500 box-shadow shadow"
-                onClick={() => Navigate("/SignUp")}
+                onClick={() => navigate("/SignUp")}
               >
                 SignUp
               </button>
