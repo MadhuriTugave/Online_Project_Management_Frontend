@@ -4,13 +4,15 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import logoTop from "../Images/Logo.jpg";
+import { useDispatch } from "react-redux";
+import { SetUser } from "../Redux/Actions";
 
 function SignUp() {
   // State to store the email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const dispatch = useDispatch();
   // Instantiate the navigate hook
   const navigate = useNavigate();
 
@@ -62,7 +64,7 @@ function SignUp() {
           localStorage.setItem("access_token", response.data.access_token);
 
           // Fetch the user data
-          //   dispatch(fetchUser());
+            dispatch(SetUser(response.data.user));
 
           // Navigate to the dashboard
           toast.success(response.data.message);

@@ -16,6 +16,7 @@ function App() {
   return (
     <>
       <Toaster/>
+      
     <Routes>
       <Route path='/' element={<Login/>}></Route>
       <Route path='/SignUp' element={<SignUp/>}></Route>

@@ -57,7 +57,7 @@ function Navbar() {
       }, [showProfileOptions]);
   return (
     <>
-    <nav className="flex justify-between items-center p-3 lg:mt-0 bg-box-bg sm:w-[90%] sm:mx-auto sm:mt-4  sm:rounded-xl lg:max-w-20 lg:flex-col lg:fixed lg:inset-y-0 lg:left-0 lg:z-50  lg:rounded-xl bg-white box-shadow shadow hover:shadow-2xl">
+    <nav className="flex justify-between items-center p-3 lg:mt-0 bg-box-bg sm:w-[100%] sm:mx-auto sm:mt-4  sm:rounded-xl lg:max-w-20 lg:flex-col lg:fixed lg:inset-y-0 lg:left-0 lg:z-50  lg:rounded-xl shadow-md shadow-blue-500/50 bg-white box-shadow shadow hover:shadow-2xl">
    
       <div className="flex lg:flex-col lg:items-center lg:justify-center lg:flex-grow lg:mt-2 lg:mb-4">
         <NavLink

@@ -2,13 +2,19 @@ import React, { useState } from 'react'
 import Navbar from './Navbar'
 import Inputfield from './inputfield'
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import {  useNavigate } from 'react-router-dom';
+// import header from "../Images/Header-bg.jpg"
 
 // import header from "../Images/Header-bg.jpg"
 
 function DetailfillingForm() {
 
   const user = useSelector((state) => state);
-  console.log(user)
+  console.log(user.LoginLogoutUser)
+  const UserId = user.LoginLogoutUser.user._id;
+const navigate = useNavigate();
 
   const[theme , setTheme] = useState("");
   const[reason , setReason] = useState("");
@@ -23,41 +29,86 @@ function DetailfillingForm() {
   const[division , setDivision] = useState("");
 
 
-  function handleProjectSave (e){
+async  function handleProjectSave (e){
       e.preventDefault();
 
 
       if(theme && reason && category && startDate && type && priority && endDate && department && location && status &&  division){
          console.log(endDate > startDate);
         if(endDate > startDate){
-          console.log("submited")
+          // console.log("submited")
+          try {
+           const Response = await axios
+            .post(
+              `http://localhost:3001/ProjectList/${UserId}`,
+              {
+                theme,
+                reason,
+                category,
+                startDate,
+                type,
+                priority,
+                endDate,
+                department,
+                location,
+                status,
+                division,
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                },
+              }
+            )
+            // console.log(Response);
+            setTheme("");
+            setCategory("");
+              setDepartMent("");
+              setDivision("");
+              setEndDate("");
+              setLocation("");
+              setPriority("");
+              setReason("");
+              setStartDate("");
+              setType("");
+           
+            
+            setTimeout(() => {
+              toast.success(Response.data.message)
+              navigate("/ProjectList")
+            }, 2000);
+            
+          } catch (error) {
+            console.log(error)
+          }
             
           }else{
-            console.log("End Date should not be smaller then start Date")
+            toast.error("End Date should not be smaller then start Date")
           }
 
       }else{
-        console.log("All the fields are mandatory")
+        toast.error("All the fields are mandatory")
       }
  
   }
 
   return (
     <div>
-      <div>
+    
   <Navbar/>
   
-    </div>
-    <div className='bg-blue-100 flex justify-evenly h-screen '>
   
-     <div>
-     <div className="h-screen  ">
-      {/* <div >
+    <div className=' flex justify-evenly h-full '>
+  
+     
+     <div className="h-screen m-2 ">
+      <h1 className='m-2 text-blue-500 font-bold text-3xl sm:text-2xl' >Create Project</h1>
+      {/* <div className='' >
         <img src='header' className='h-full w-full'/>
       </div> */}
-     <div className="  p-10 w-full">
+     <div className="  p-7 w-full bg-blue-100 shadow-sm shadow-blue-500/50">
       
-     <form className="space-y-6 p-8 bg-white rounded-lg shadow-lg" onSubmit={handleProjectSave} >
+<form className="space-y-8 p-8 bg-white rounded-lg shadow-lg" onSubmit={handleProjectSave} >
 
   <div className="space-y-4 md:flex md:items-center md:space-y-1 md:space-x-3">
     <Inputfield
@@ -87,10 +138,10 @@ function DetailfillingForm() {
           onChange={(e) => setReason(e.target.value)}
           className="w-full p-3 border rounded-lg border-black"
         >
-          <option value="">For Business</option>
-          <option value="category1">Business</option>
-          <option value="category2">Dealership </option>
-          <option value="category3"> Transport</option>
+          <option>For Business</option>
+          <option>Business</option>
+          <option>Dealership </option>
+          <option> Transport</option>
         </select>
       </label>
 
@@ -102,10 +153,10 @@ function DetailfillingForm() {
           onChange={(e) => setCategory(e.target.value)}
           className="w-full p-3 border rounded-lg border-black"
         >
-          <option value="">Select Category</option>
-          <option value="category1">QualityA</option>
-          <option value="category2">QualityB </option>
-          <option value="category3">QualityC </option>
+          <option>Select Category</option>
+          <option>QualityA</option>
+          <option>QualityB </option>
+          <option>QualityC </option>
         </select>
       
       </label>
@@ -131,10 +182,10 @@ function DetailfillingForm() {
           onChange={(e) => setType(e.target.value)}
           className="w-full p-3 border rounded-lg border-black"
         >
-          <option value="">Select Type</option>
-          <option value="category1">Internal</option>
-          <option value="category2">External </option>
-          <option value="category3">Vendor </option>
+          <option>Select Type</option>
+          <option>Internal</option>
+          <option>External </option>
+          <option>Vendor </option>
         </select>
       </label>
 
@@ -148,9 +199,9 @@ function DetailfillingForm() {
           className="w-full p-3 border rounded-lg border-black"
         >
           <option value="">Select priority</option>
-          <option value="category1">High</option>
-          <option value="category2">Medium </option>
-          <option value="category3">low </option>
+          <option>High</option>
+          <option>Medium </option>
+          <option>low </option>
         </select>
   
       </label>
@@ -179,9 +230,9 @@ function DetailfillingForm() {
           className="w-full p-3 border rounded-lg border-black"
         >
           <option value="">Select Location</option>
-          <option value="category1">Pune</option>
-          <option value="category2">Delhi </option>
-          <option value="category3">Mumbai </option>
+          <option>Pune</option>
+          <option>Delhi </option>
+          <option>Mumbai </option>
         </select>
       </label>
       <label className="block">
@@ -194,11 +245,11 @@ function DetailfillingForm() {
           className="w-full p-3 border rounded-lg border-black"
         >
           <option value="">Select DepartMent</option>
-          <option value="category1">Finance</option>
-          <option value="category2">stores </option>
-          <option value="category3">Startegy </option>
-          <option value="category3">Quality </option>
-          <option value="category3">Maintenance </option>
+          <option>Finance</option>
+          <option>stores </option>
+          <option>Startegy </option>
+          <option>Quality </option>
+          <option>Maintenance </option>
         </select>
       </label>
       
@@ -213,11 +264,11 @@ function DetailfillingForm() {
           className="w-full p-3 border rounded-lg border-black"
         >
           <option value="">Select Division</option>
-          <option value="category1">Compressor</option>
-          <option value="category2">Filters </option>
-          <option value="category3">Pumps </option>
-          <option value="category3">Glass </option>
-          <option value="category3">Water heater </option>
+          <option>Compressor</option>
+          <option>Filters </option>
+          <option>Pumps </option>
+          <option>Glass </option>
+          <option>Water heater </option>
         </select>
       </label>
     </div>
@@ -234,10 +285,10 @@ function DetailfillingForm() {
   </div>
 </form>
         </div>
-     </div>
+    
      </div>
     </div>
-    </div>
+     </div>
   )
 }
 

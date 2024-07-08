@@ -70,7 +70,7 @@ function Login() {
             navigate("/Dashboard");
           }, 2000);
         } catch (error) {
-          toast.error(error.response.data.message);
+          toast.error(error);
         }
       }
     }
@@ -83,7 +83,7 @@ function Login() {
   };
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
+    <div className="h-screen flex flex-col lg:justify-center items-center ">
       <div className=" " style={{ top: logoTop }}>
         <img
           src={logoTop}
