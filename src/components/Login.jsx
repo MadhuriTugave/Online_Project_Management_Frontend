@@ -55,8 +55,8 @@ function Login() {
             `http://localhost:3001/User/Login`,
             { email, password }
           );
-          console.log(response.data);
-          toast(response.data.message);
+          // console.log(response.data);
+         
 
           // Set access token in local storage
           localStorage.setItem("access_token", response.data.access_token);
@@ -70,7 +70,8 @@ function Login() {
             navigate("/Dashboard");
           }, 2000);
         } catch (error) {
-          toast.error(error);
+          // console.log(error)
+          toast.error(error.response.data.message);
         }
       }
     }

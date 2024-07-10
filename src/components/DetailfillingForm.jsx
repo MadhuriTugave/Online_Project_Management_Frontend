@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar'
 import Inputfield from './inputfield'
-import { useSelector } from 'react-redux';
+
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import {  useNavigate } from 'react-router-dom';
@@ -11,9 +11,7 @@ import {  useNavigate } from 'react-router-dom';
 
 function DetailfillingForm() {
 
-  const user = useSelector((state) => state);
-  console.log(user.LoginLogoutUser)
-  const UserId = user.LoginLogoutUser.user._id;
+ 
 const navigate = useNavigate();
 
   const[theme , setTheme] = useState("");
@@ -40,7 +38,7 @@ async  function handleProjectSave (e){
           try {
            const Response = await axios
             .post(
-              `http://localhost:3001/ProjectList/${UserId}`,
+              `http://localhost:3001/ProjectList`,
               {
                 theme,
                 reason,
@@ -72,9 +70,9 @@ async  function handleProjectSave (e){
               setStartDate("");
               setType("");
            
-            
-            setTimeout(() => {
               toast.success(Response.data.message)
+            setTimeout(() => {
+             
               navigate("/ProjectList")
             }, 2000);
             

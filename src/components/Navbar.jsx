@@ -5,10 +5,13 @@ import {  NavLink, useLocation, useNavigate } from "react-router-dom";
  import ProjectList from "../Images/Project-list-active.jpg";
  import createProject from "../Images/image1.jpg"
  import profile  from "../Images/Logout (1).jpg"
+import { useSelector } from "react-redux";
 
 
 
 function Navbar() {
+   const user = useSelector((state) => state);
+  
 
     const [showProfileOptions, setShowProfileOptions] = useState(false);
     const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
@@ -86,11 +89,11 @@ function Navbar() {
        
       </div>
       <div ref={profileRef}>
-        <img src={profile} alt="logout"
-          className="w-6 h-6 lg:mt-auto lg:mb-4  cursor-pointer"
-          onClick={() => setShowProfileOptions(!showProfileOptions)}
-        />
-      </div>
+         <img src={profile} alt="logout"
+           className="w-6 h-6 lg:mt-auto lg:mb-4  cursor-pointer"
+           onClick={() => setShowProfileOptions(!showProfileOptions)}
+         />
+   </div>
       {showProfileOptions && (
         <div
           className="bg-blue-400 rounded-xl shadow-2xl p-4 absolute"
@@ -101,10 +104,10 @@ function Navbar() {
           }}
         >
           {access_token ? (
-            <div className="text-white text-center">
-              {/* <p>{user.data.email}</p> */}
+            <div className="text-black text-center">
+              <p>{user.LoginLogoutUser.user.email}</p>
               <button
-                className="bg-white-bg text-blue m-2 py-2 px-4 rounded hover:bg-white transition duration-300 hover:text-blue-500 box-shadow shadow"
+                className="bg-white text-blue m-2 py-2 px-4 rounded hover:bg-white transition duration-300 hover:text-blue-500 "
                 onClick={handleLogout}
               >
                 Logout
