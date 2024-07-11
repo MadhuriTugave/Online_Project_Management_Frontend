@@ -60,27 +60,27 @@ function Dashboard() {
         
   <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md  '>
     <div className='w-1 h-[90px] bg-blue-400 flex rounded'>
-        <div className='lg:text-lg sm:text-sm  ml-3'>TotalProjects <span className='text-4xl m-2'>{total ? total : <h1 className='text-sm'>Loading..</h1>}</span></div>
+        <div className='lg:text-lg sm:text-sm  ml-3'>TotalProjects <span className='text-4xl m-2'>{total }</span></div>
           </div>
          </div>
          <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md  '>
     <div className='w-1 h-[90px] bg-blue-400 flex rounded'>
-        <div className='lg:text-lg  ml-3 sm:text-sm'>Closed <span className='text-4xl m-2'>{closed ? closed : <h1 className='text-sm'>Loading..</h1>}</span></div>
+        <div className='lg:text-lg  ml-3 sm:text-sm'>Closed <span className='text-4xl m-2'>{closed }</span></div>
           </div>
          </div>
          <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md sm:hidden lg:block'>
     <div className='w-1 h-[90px] bg-blue-400 flex rounded'>
-        <div className='lg:text-lg  ml-3 sm:text-sm '>Running <span className='text-4xl m-2'>{runningProjects ? runningProjects: <h1 className='text-sm'>Loading..</h1>}</span></div>
+        <div className='lg:text-lg  ml-3 sm:text-sm '>Running <span className='text-4xl m-2'>{runningProjects }</span></div>
           </div>
          </div>
          <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md  '>
     <div className='w-1 h-[90px] bg-blue-400  rounded    '>
-        <div className='lg:text-lg  ml-3 sm:text-sm '>ClosureDelay <span className='text-4xl m-2'>{delay ? delay : <h1 className='text-sm'>Loading..</h1>}</span></div>
+        <div className='lg:text-lg  ml-3 sm:text-sm '>ClosureDelay <span className='text-4xl m-2'>{delay}</span></div>
           </div>
          </div>
   <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md lg:block sm:hidden md:hidden '>
          <div className='w-1 h-[90px] bg-blue-400 flex rounded  '>
-            <div className=' lg:text-lg  ml-3 sm:taxt-sm '>Cancelled <span className='text-4xl m-2'>{cancelled ? cancelled :<h1 className='text-sm'>Loading..</h1>}</span></div>
+            <div className=' lg:text-lg  ml-3 sm:taxt-sm '>Cancelled <span className='text-4xl m-2'>{cancelled}</span></div>
           </div>
   </div>
             </div>
