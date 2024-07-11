@@ -40,30 +40,33 @@ function ProjectList() {
 
     Get();
   }, []);
+
+  
   useEffect(() => {
+    async function handleSortSearch () {
+      let sortedData = data;
+    
+      if (sortField) {
+        sortedData = [...data].sort((a, b) => {
+          if (a[sortField] < b[sortField]) return -1;
+          if (a[sortField] > b[sortField]) return 1;
+          return 0;
+        });
+        // console.log(sortedData);
+      }
+       if (searchItem) {
+        sortedData = data.filter((project) =>
+          project.ProjectName.includes(searchItem)
+        );
+      }
+      // console.log(sortedData)
+      setSearchResult(sortedData);
+    };
 
     handleSortSearch();
   },[sortField, searchItem, data ]);
 
- async function handleSortSearch () {
-    let sortedData = data;
-  
-    if (sortField) {
-      sortedData = [...data].sort((a, b) => {
-        if (a[sortField] < b[sortField]) return -1;
-        if (a[sortField] > b[sortField]) return 1;
-        return 0;
-      });
-      // console.log(sortedData);
-    }
-     if (searchItem) {
-      sortedData = data.filter((project) =>
-        project.ProjectName.includes(searchItem)
-      );
-    }
-    // console.log(sortedData)
-    setSearchResult(sortedData);
-  };
+ 
 
 
 
