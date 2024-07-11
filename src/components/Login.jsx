@@ -6,7 +6,7 @@ import logoTop from "../Images/Logo.jpg";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { SetUser } from "../Redux/Actions";
-// import bgImage from "../Images/login-bg-1.jpg"
+import bgImage from "../Images/login-bg-1.jpg"
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -52,7 +52,7 @@ function Login() {
       } else {
         try {
           const response = await axios.post(
-            `http://localhost:3001/User/Login`,
+            `https://online-project-management-onae.onrender.com/User/Login`,
             { email, password }
           );
           // console.log(response.data);
@@ -84,16 +84,21 @@ function Login() {
   };
 
   return (
-    <div className="h-screen flex flex-col lg:justify-center items-center ">
-      <div className=" " style={{ top: logoTop }}>
+    <div className="h-[500px] flex flex-col lg:justify-center items-center relative ">
+      <div className="absolute">
+        <img src={bgImage} alt="header"/>
+      </div>
+      <div className="absolute top-[5rem] justify-center  " style={{ top: logoTop }}>
         <img
           src={logoTop}
           alt="logo"
           className="w-32 h-32 object-cover rounded-full"
         />
+       
       </div>
-      <div className="rounded-3xl bg-blue-300 p-8 max-w-md w-full shadow-xl">
-        <h1 className="text-heading-l text-white mb-5 mt-5 ">
+     
+      <div className="rounded-3xl bg-white p-7 sm:shadow-3xl  max-w-md w-full shadow-xl absolute top-[15rem]">
+        <h1 className="text-heading-l text-black mb-5 mt-5 ">
           Login To Get started
         </h1>
         {/* Login Form */}
@@ -117,7 +122,7 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full rounded-lg text-body-m  text-lg bg-blue-500 hover:bg-white  transition-duration-300 p-4"
+            className="w-full rounded-lg text-body-m  text-lg bg-blue-500 hover:bg-blue-300  transition-duration-300 p-4"
             formNoValidate
           >
             Login
@@ -125,7 +130,7 @@ function Login() {
         </form>
         {/* Navigate to Sign Up Page */}
         <div className="flex items-center justify-center mt-6">
-          <p className="text-sm text-white mr-2">Don't have an account?</p>
+          <p className="text-sm text-black mr-2">Don't have an account?</p>
           <button
             onClick={handleSignupClick}
             className="text-blue-800 text-body-m hover:text-black"

@@ -6,6 +6,7 @@ import axios from "axios";
 import logoTop from "../Images/Logo.jpg";
 import { useDispatch } from "react-redux";
 import { SetUser } from "../Redux/Actions";
+import bgImage from "../Images/login-bg-1.jpg"
 
 function SignUp() {
   // State to store the email and password
@@ -52,7 +53,7 @@ function SignUp() {
         try {
           // Send the registration request
           const response = await axios.post(
-            `http://localhost:3001/User/SignUp`,
+            `https://online-project-management-onae.onrender.com/User/SignUp`,
             {
               email,
               password,
@@ -86,16 +87,20 @@ function SignUp() {
     navigate("/");
   };
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
-      <div className=" " style={{ top: logoTop }}>
+    <div className="h-[500px] flex flex-col justify-center items-center">
+      <div className="absolute">
+        <img src={bgImage} alt="header"/>
+      </div>
+      <div className="absolute top-[5rem] justify-center  " style={{ top: logoTop }}>
         <img
           src={logoTop}
           alt="logo"
           className="w-32 h-32 object-cover rounded-full"
         />
+       
       </div>
-      <div className="rounded-3xl bg-blue-300 p-8 max-w-md w-full shadow-xl ">
-        <h1 className="text-heading-l text-white mb-5 mt-8">Sign Up</h1>
+      <div className="rounded-3xl bg-white p-6 max-w-md w-full shadow-2xl absolute top-[15rem]">
+        <h1 className="text-heading-l text-blue mb-5 mt-3 text-center">Sign Up</h1>
 
         <form onSubmit={handleSignUp} className="space-y-5">
           {/* Email Address Input Field*/}
@@ -123,7 +128,7 @@ function SignUp() {
           />
           <button
             type="submit"
-            className="w-full rounded-lg text-body-m  text-lg bg-blue-500 hover:bg-white  transition-duration-300 p-4"
+            className="w-full rounded-lg text-body-m  text-lg bg-blue-500 hover:bg-blue-300  transition-duration-300 p-4"
             formNoValidate
           >
             SignUp
@@ -132,7 +137,7 @@ function SignUp() {
 
         {/* Navigate to Sign Up Page */}
         <div className="flex items-center justify-center mt-6">
-          <p className="text-sm text-white mr-2">Already have an account?</p>
+          <p className="text-sm text-black mr-2">Already have an account?</p>
           <button
             onClick={handleLoginClick}
             className="text-blue-800  text-body-m hover:text-black"

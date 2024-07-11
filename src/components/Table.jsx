@@ -14,7 +14,7 @@ function TableData({ data, onUpdateStatus }) {
     // console.log(localStorage.getItem("access_token"));
     try {
       const response = await axios.put(
-        `http://localhost:3001/ProjectList/${projectId}`,
+        `https://online-project-management-onae.onrender.com/ProjectList/${projectId}`,
         {
           status: status,
         },
@@ -36,12 +36,12 @@ function TableData({ data, onUpdateStatus }) {
   return (
     <>
       <tbody>
-        {data.map((project) => (
+        { data ? data.map((project) => (
           // console.log(project.ProjectName, project.status)
           <tr key={project._id}>
-            <td className="py-2 px-4 border-b">
-              {project.ProjectName}
-              <div>
+            <td className="py-2 px-4 border-b ">
+            <div className="font-bold">  {project.ProjectName}</div>
+              <div className="text-sm">
                 <div>
                   {" "}
                   {formatDate(project.StartDate)} to{" "}
@@ -49,7 +49,7 @@ function TableData({ data, onUpdateStatus }) {
                 </div>
               </div>
             </td>
-            <td className="py-2 px-3 border-b">{project.Reason}</td>
+            <td className="py-2 px-3 border-b ">{project.Reason}</td>
             <td className="py-2 px-3 border-b">{project.Category}</td>
             <td className="py-2 px-3 border-b">{project.Type}</td>
             <td className="py-2 px-3 border-b">{project.Priority}</td>
@@ -60,26 +60,26 @@ function TableData({ data, onUpdateStatus }) {
 
             <div className="">
               <button
-                className="p-1 bg-blue-300 m-2  rounded-lg w-[70px] hover:bg-white text-blue-500 border-2"
+                className="p-2 bg-blue-300 m-2  rounded-lg w-[70px] hover:bg-white text-blue-500 border-2"
                 onClick={() => HandleStatus(project._id, "Running")}
               >
                 Start
               </button>
               <button
-                className="p-1 bg-blue-300 m-2 rounded-lg w-[70px]  hover:bg-white text-blue-500 border-2"
+                className="p-2 bg-blue-300 m-2 rounded-lg w-[70px]  hover:bg-white text-blue-500 border-2"
                 onClick={() => HandleStatus(project._id, "Closed")}
               >
                 Close
               </button>
               <button
-                className="p-1 bg-blue-300 m-2 rounded-lg w-[70px] "
+                className="p-2 bg-blue-300 m-2 rounded-lg w-[70px] "
                 onClick={() => HandleStatus(project._id, "Cancled")}
               >
                 Cancel
               </button>
             </div>
           </tr>
-        ))}
+        )) : <div className="text-center text-2xl">Loading.....</div>}
       </tbody>
     </>
   );
