@@ -74,7 +74,7 @@ function Graphs() {
     }, [id]);
 
   return (
-    <div className='w-[500px] absolute bottom-[1rem] shadow-2xl '>
+    <div className='w-[500px] absolute lg:bottom-[-3rem] shadow-2xl md:bottom-[-2rem]  sm:bottom-[-5rem] '>
       
       <HighchartsReact
                 highcharts={Highcharts}

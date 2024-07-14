@@ -5,9 +5,9 @@ import Inputfield from './inputfield'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import {  useNavigate } from 'react-router-dom';
-// import header from "../Images/Header-bg.jpg"
+import header from "../Images/Header-bg.jpg"
 
-// import header from "../Images/Header-bg.jpg"
+import logo from "../Images/Logo.jpg"
 
 function DetailfillingForm() {
 
@@ -91,22 +91,35 @@ async  function handleProjectSave (e){
   }
 
   return (
-    <div>
-    
-  <Navbar/>
+    <div className="flex flex-col lg:flex-row h-screen">
+    <div className=" text-white w-full lg:w-20 p-4">
+      <Navbar />
+    </div>
   
   
-    <div className=' flex justify-evenly h-full '>
+    {/* <div className=' flex justify-evenly h-full '> */}
   
      
-     <div className="h-screen m-2 ">
-      <h1 className='m-2 text-blue-500 font-bold text-3xl sm:text-2xl' >Create Project</h1>
-      {/* <div className='' >
-        <img src='header' className='h-full w-full'/>
-      </div> */}
-     <div className="  p-7 w-full bg-blue-100 shadow-sm shadow-blue-500/50">
+     <div className="flex-grow p-2 lg:ml-7 ">
+     <div className="relative ">
+          <img src={header} className="h-auto max-w-full   " alt="header" />
+          <div className="absolute top-[2rem] justify-center right-[36rem]  " style={{ top: logo }}>
+        <img
+          src={logo}
+          alt="logo"
+          className="w-20 h-20 object-cover rounded-full bg-blue-500 "
+        />
+       
+      </div>
+          <h1 className=" absolute lg:top-10 left-5 right-0 text-white font-bold text-2xl sm:top-1">
+            Create Project{" "}
+          </h1>
+        </div>
+    
+    
+     <div className="  p-2 w-[1270px]  shadow-lg shadow-blue-500/50 absolute lg:bottom-0 ml-3 rounded-2xl sm:bottom-[-10rem]">
       
-<form className="space-y-8 p-8 bg-white rounded-lg shadow-lg" onSubmit={handleProjectSave} >
+<form className="space-y-8 p-4 bg-white rounded-xl shadow-xl" onSubmit={handleProjectSave} >
 
   <div className="space-y-4 md:flex md:items-center md:space-y-1 md:space-x-3">
     <Inputfield
@@ -119,7 +132,7 @@ async  function handleProjectSave (e){
     />
     <button
       type="submit"
-      className="w-full md:w-auto md:flex-none rounded-lg text-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 p-3"
+      className="w-full md:w-auto md:flex-none  rounded-lg text-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 p-3"
     >
       Save Project 
     </button>
@@ -128,7 +141,7 @@ async  function handleProjectSave (e){
 
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div className="space-y-3">
-      <label className="block">
+      <label className="block ">
         Reason
         <select
           id="reason"
@@ -155,6 +168,7 @@ async  function handleProjectSave (e){
           <option>QualityA</option>
           <option>QualityB </option>
           <option>QualityC </option>
+          <option>QualityD</option>
         </select>
       
       </label>
@@ -285,7 +299,7 @@ async  function handleProjectSave (e){
         </div>
     
      </div>
-    </div>
+    {/* </div> */}
      </div>
   )
 }

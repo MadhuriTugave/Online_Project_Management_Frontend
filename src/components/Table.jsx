@@ -39,7 +39,7 @@ function TableData({ data, onUpdateStatus }) {
         { data ? data.map((project) => (
           // console.log(project.ProjectName, project.status)
           <tr key={project._id}>
-            <td className="py-2 px-4 border-b ">
+            <td className="py-2 px-3 border-b ">
             <div className="font-bold">  {project.ProjectName}</div>
               <div className="text-sm">
                 <div>
@@ -49,7 +49,7 @@ function TableData({ data, onUpdateStatus }) {
                 </div>
               </div>
             </td>
-            <td className="py-2 px-3 border-b ">{project.Reason}</td>
+            <td className="py-2 px-3 border-b  ">{project.Reason}</td>
             <td className="py-2 px-3 border-b">{project.Category}</td>
             <td className="py-2 px-3 border-b">{project.Type}</td>
             <td className="py-2 px-3 border-b">{project.Priority}</td>
@@ -60,19 +60,19 @@ function TableData({ data, onUpdateStatus }) {
 
             <div className="">
               <button
-                className="p-2 bg-blue-300 m-2  rounded-lg w-[70px] hover:bg-white text-blue-500 border-2"
+                className="p-1 bg-blue-600 m-2  rounded-3xl w-[70px]  text-white border-2"
                 onClick={() => HandleStatus(project._id, "Running")}
               >
                 Start
               </button>
               <button
-                className="p-2 bg-blue-300 m-2 rounded-lg w-[70px]  hover:bg-white text-blue-500 border-2"
+                className="p-1 bg-white m-2 rounded-3xl w-[70px]  text-blue-500 border-2 border-blue-500"
                 onClick={() => HandleStatus(project._id, "Closed")}
               >
                 Close
               </button>
               <button
-                className="p-2 bg-blue-300 m-2 rounded-lg w-[70px] "
+                className="p-1 bg-white m-2 rounded-3xl w-[70px]  text-blue-500 border-2 border-blue-500"
                 onClick={() => HandleStatus(project._id, "Cancled")}
               >
                 Cancel

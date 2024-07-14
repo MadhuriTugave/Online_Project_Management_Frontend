@@ -7,10 +7,15 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { SetUser } from "../Redux/Actions";
 import bgImage from "../Images/login-bg-1.jpg"
+import show from "../Images/show.jpg";
+import hide from "../Images/hide.jpg";
+
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordVisible , setPasswordVisible]=useState(false);
+
   const dispatch = useDispatch();
   // Regex to validate the email address
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -56,7 +61,7 @@ function Login() {
             { email, password }
           );
           // console.log(response.data);
-         
+          toast.success(response.data.message);
 
           // Set access token in local storage
           localStorage.setItem("access_token", response.data.access_token);
@@ -65,10 +70,10 @@ function Login() {
           dispatch(SetUser(response.data.user));
 
           // Navigate to the dashboard
-          toast.success(response.data.message);
+        
           setTimeout(() => {
             navigate("/Dashboard");
-          }, 2000);
+          }, 1000);
         } catch (error) {
           // console.log(error)
           toast.error(error.response.data.message);
@@ -77,11 +82,15 @@ function Login() {
     }
   };
 
+
   // Navigate to Sign Up Page
   const handleSignupClick = () => {
  
     navigate("/SignUp");
   };
+  const handlePasssword=()=>{
+    setPasswordVisible(!passwordVisible);
+  }
 
   return (
     <div className="h-[500px] flex flex-col lg:justify-center items-center relative ">
@@ -98,7 +107,7 @@ function Login() {
       </div>
      
       <div className="rounded-3xl bg-white p-7 sm:shadow-3xl  max-w-md w-full shadow-xl absolute top-[15rem]">
-        <h1 className="text-heading-l text-black mb-5 mt-5 ">
+        <h1 className="text-2xl text-black mb-5 text-center ">
           Login To Get started
         </h1>
         {/* Login Form */}
@@ -107,19 +116,30 @@ function Login() {
           <Inputfield
             id="email"
             type="email"
-            placeholder="Email address"
+            placeholder="Email address...."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           {/* Password Input Field*/}
-          <Inputfield
+          <div className="relative ">
+        <Inputfield
             id="password"
-            type="password"
+            type={passwordVisible ? "text" :"password"}
             placeholder="Password"
             value={password}
+           
             onChange={(e) => setPassword(e.target.value)}
           />
-
+           <button onClick={handlePasssword} type="button">
+           {
+            passwordVisible? ( <img src={hide} alt="hide" className="absolute h-9 w-9 top-2 right-3"/>):
+            (<img src={show} alt="show" className="absolute h-10 w-10 top-2 right-3"/>)
+           }
+          </button>
+         
+     
+         </div>
+      
           <button
             type="submit"
             className="w-full rounded-lg text-body-m  text-lg bg-blue-500 hover:bg-blue-300  transition-duration-300 p-4"

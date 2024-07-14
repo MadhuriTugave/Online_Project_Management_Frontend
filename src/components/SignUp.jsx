@@ -6,13 +6,17 @@ import axios from "axios";
 import logoTop from "../Images/Logo.jpg";
 import { useDispatch } from "react-redux";
 import { SetUser } from "../Redux/Actions";
-import bgImage from "../Images/login-bg-1.jpg"
+import bgImage from "../Images/login-bg-1.jpg";
+import show from "../Images/show.jpg";
+import hide from "../Images/hide.jpg";
 
 function SignUp() {
   // State to store the email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordVisible ,setPasswordVisible]= useState(false);
+
   const dispatch = useDispatch();
   // Instantiate the navigate hook
   const navigate = useNavigate();
@@ -86,21 +90,24 @@ function SignUp() {
   const handleLoginClick = () => {
     navigate("/");
   };
+  const handlePasssword = ()=>{
+    setPasswordVisible(!passwordVisible);
+  }
   return (
-    <div className="h-[500px] flex flex-col justify-center items-center">
-      <div className="absolute">
-        <img src={bgImage} alt="header"/>
-      </div>
-      <div className="absolute top-[5rem] justify-center  " style={{ top: logoTop }}>
-        <img
-          src={logoTop}
-          alt="logo"
-          className="w-32 h-32 object-cover rounded-full"
-        />
-       
-      </div>
+    <div className="h-[500px] flex flex-col lg:justify-center items-center relative ">
+    <div className="absolute">
+      <img src={bgImage} alt="header"/>
+    </div>
+    <div className="absolute top-[5rem] justify-center  " style={{ top: logoTop }}>
+      <img
+        src={logoTop}
+        alt="logo"
+        className="w-32 h-32 object-cover rounded-full"
+      />
+     
+    </div>
       <div className="rounded-3xl bg-white p-6 max-w-md w-full shadow-2xl absolute top-[15rem]">
-        <h1 className="text-heading-l text-blue mb-5 mt-3 text-center">Sign Up</h1>
+        <h1 className="text-2xl text-blue mb-5 text-center">Sign Up</h1>
 
         <form onSubmit={handleSignUp} className="space-y-5">
           {/* Email Address Input Field*/}
@@ -112,20 +119,29 @@ function SignUp() {
             onChange={(e) => setEmail(e.target.value)}
           />
           {/* Password Input Field*/}
-          <Inputfield
+        <div className="relative ">
+        <Inputfield
             id="password"
-            type="password"
+            type={passwordVisible ? "text" :"password"}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+           <button onClick={handlePasssword} type="button">
+           {
+            passwordVisible? ( <img src={hide} alt="hide" className="absolute h-9 w-9 top-2 right-3"/>):
+            (<img src={show} alt="show" className="absolute h-10 w-10 top-2 right-3"/>)
+           }
+          </button>
+        
           <Inputfield
             id="confirmPassword"
-            type="password"
+            type={passwordVisible ? "text" :"password"}
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
+          </div>
           <button
             type="submit"
             className="w-full rounded-lg text-body-m  text-lg bg-blue-500 hover:bg-blue-300  transition-duration-300 p-4"
