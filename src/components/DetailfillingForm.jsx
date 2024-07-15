@@ -119,10 +119,11 @@ async  function handleProjectSave (e){
     
      <div className="  lg:w-[1250px]  absolute lg:top-[8rem]  rounded-2xl sm:top-[10rem] Sm:top-[12rem]">
       
-<form className="mt-2 space-y-8 px-10 py-5 bg-white rounded-xl  shadow-lg shadow-blue-500/50 lg:w-[1200px]  Sm:ml-8 sm:ml-8 flex Sm:flex-col-reverse lg:flex-col" onSubmit={handleProjectSave} >
+<form className="mt-3 space-y-8 px-20 py-5 bg-white rounded-xl  shadow-lg shadow-blue-500/50 lg:w-[1200px]  Sm:ml-8 sm:ml-8 flex Sm:flex-col lg:flex-row" onSubmit={handleProjectSave} >
 
-  <div className="space-y-4 md:flex md:items-center md:space-y-1 md:space-x-3 ">
-    <Inputfield
+<div>
+<div >
+<Inputfield
       id="theme"
       type="text"
       placeholder="Enter Project Theme..."
@@ -130,13 +131,8 @@ async  function handleProjectSave (e){
       onChange={(e) => setTheme(e.target.value)}
       className="w-full p-3 border border-indigo-600 border-black rounded-lg md:flex-1  "
     />
-    <button
-      type="submit"
-      className="w-full md:w-auto md:flex-none  rounded-lg text-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 p-3"
-    >
-      Save Project 
-    </button>
-  </div>
+</div>
+  
 
 
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -294,6 +290,17 @@ async  function handleProjectSave (e){
           className="w-full p-3 "
         />
       </label>
+  </div>
+</div>
+  <div className=" lg:ml-20  ">
+  <button
+      type="submit"
+      className="w-full md:w-auto md:flex-none  rounded-lg text-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 p-3"
+    >
+      Save Project 
+    </button>
+    
+   
   </div>
 </form>
         </div>
