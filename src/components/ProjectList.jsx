@@ -115,7 +115,7 @@ function nextPage(){
       <div className="flex-grow p-2 lg:ml-6">
       <div className="relative">
         <img src={header} className="h-auto max-w-full" alt="header" />
-        <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[11rem] sm:top-[1rem] Sm:top-[1rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
+        <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[10rem] sm:top-[1rem] Sm:top-[0rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
         <img
           src={logo}
           alt="logo"
@@ -123,15 +123,15 @@ function nextPage(){
         />
        
       </div>
-        <h1 className="absolute lg:top-10 left-5 right-0 text-white font-bold text-2xl sm:top-1 Sm:top-1">
+        <h1 className="absolute lg:top-10 left-5 right-0 text-white font-bold text-2xl Sm:text-lg sm:top-1 Sm:top-1">
           Project List
         </h1>
       </div>
 
       <div className="flex flex-col absolute bottom-[-5rem] ml-2 bg-white shadow-xl rounded-xl lg:top-[9rem] sm:top-[13rem]  Sm:top-[13rem] p-4">
         <div className="flex flex-col sm:flex-row Sm:flex-row justify-between mb-2">
-          <div className="flex items-center mb-2 sm:mb-0">
-            <div className="mt-5 p-2 Sm:mt-1 lg:block Sm:hidden ">
+          <div className="flex items-center   mb-2 sm:mb-0">
+            <div className="mt-5 p-1 Sm:mt-1 lg:block Sm:hidden ">
               <FaSearch />
             </div>
             <input
@@ -139,11 +139,11 @@ function nextPage(){
               placeholder="Search project name..."
               value={searchItem}
               onChange={(e) => setSearchItem(e.target.value)}
-              className="p-2 border-b-2 rounded-l m-1 Sm:m-0"
+              className="p-1 border-b-2 rounded-l m-1 Sm:m-0"
             />
           </div>
-          <div className="flex lg:flex-row  Sm:flex-row items-center p-2">
-            <label className="p-1 ">Sort By</label>
+          <div className="flex lg:flex-row  Sm:flex-col items-center p-2">
+            <label className="p- ">Sort By</label>
             <select
               id="reason"
               value={sortField}
