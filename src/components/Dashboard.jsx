@@ -56,39 +56,39 @@ function Dashboard() {
       {/* <div className="flex-grow "> */}
        <div className='relative '>
         <img src={header} alt='headingimage' className='h-auto max-w-full  '></img>
-        <div className="absolute top-[1rem] justify-center lg:right-[36rem] sm:right-[20rem]  " style={{ top: logo }}>
+        <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[16rem] sm:top-[1rem] Sm:top-[1rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
         <img
           src={logo}
           alt="logo"
-          className="w-20 h-20 object-cover rounded-full  "
+          className="lg:w-20 lg:h-20 Sm:w-10 Sm:h-10 sm:w-10 sm:h-10 md:w-20 md:h-20 object-cover rounded-full  "
         />
        
       </div>
         <h1 className='absolute lg:top-10 left-5 right-0 text-white font-bold text-2xl sm:top-1'>Dashboard</h1>
-        <div class="flex lg:flex-row justify-around sm:justify-evenly absolute lg:bottom-[-4rem]  sm:bottom-[-6rem] left-0 right-0 ">
+        <div class="flex lg:flex-row justify-around sm:justify-around absolute lg:bottom-[-4rem]  sm:bottom-[-5rem] left-0 right-0 ">
         
-  <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md  '>
-    <div className='w-1 h-[90px] bg-blue-400 flex rounded'>
-        <div className='lg:text-lg sm:text-sm  ml-3'>TotalProjects <span className='text-4xl m-2'>{total }</span></div>
+  <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md  sm:h-[80px] sm:w-[180px]'>
+    <div className='w-1 h-[90px] bg-blue-400 flex rounded sm:h-[80px]'>
+        <div className='lg:text-lg sm:text-sm  ml-3 sm:ml-4'>TotalProjects <span className='text-4xl m-2'>{total }</span></div>
           </div>
          </div>
-         <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md  '>
-    <div className='w-1 h-[90px] bg-blue-400 flex rounded'>
+         <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md sm:h-[80px] sm:w-[180px] '>
+    <div className='w-1 h-[90px] bg-blue-400 flex rounded sm:h-[80px]'>
         <div className='lg:text-lg  ml-3 sm:text-sm'>Closed <span className='text-4xl m-2'>{closed }</span></div>
           </div>
          </div>
-         <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md sm:hidden lg:block'>
+         <div className='bg-white shadow-2xl h-[90px] w-[220px]  rounded-md sm:hidden lg:block Sm:hidden '>
     <div className='w-1 h-[90px] bg-blue-400 flex rounded'>
         <div className='lg:text-lg  ml-3 sm:text-sm '>Running <span className='text-4xl m-2'>{runningProjects }</span></div>
           </div>
          </div>
-         <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md  '>
+         <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md sm:hidden lg:block Sm:hidden '>
     <div className='w-1 h-[90px] bg-blue-400  rounded    '>
         <div className='lg:text-lg  ml-3 sm:text-sm '>ClosureDelay <span className='text-4xl m-2'>{delay}</span></div>
           </div>
          </div>
-  <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md lg:block sm:hidden md:hidden '>
-         <div className='w-1 h-[90px] bg-blue-400 flex rounded  '>
+  <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md lg:block sm:h-[80px] sm:w-[180px] '>
+         <div className='w-1 h-[90px] sm:h-[80px] bg-blue-400 flex rounded  '>
             <div className=' lg:text-lg  ml-3 sm:taxt-sm '>Cancelled <span className='text-4xl m-2'>{cancelled}</span></div>
           </div>
   </div>

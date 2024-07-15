@@ -35,52 +35,106 @@ function TableData({ data, onUpdateStatus }) {
   };
   return (
     <>
-      <tbody>
-        { data ? data.map((project) => (
-          // console.log(project.ProjectName, project.status)
-          <tr key={project._id}>
-            <td className="py-2 px-3 border-b ">
-            <div className="font-bold">  {project.ProjectName}</div>
-              <div className="text-sm">
-                <div>
-                  {" "}
-                  {formatDate(project.StartDate)} to{" "}
-                  {formatDate(project.EndDate)}
-                </div>
-              </div>
-            </td>
-            <td className="py-2 px-3 border-b  ">{project.Reason}</td>
-            <td className="py-2 px-3 border-b">{project.Category}</td>
-            <td className="py-2 px-3 border-b">{project.Type}</td>
-            <td className="py-2 px-3 border-b">{project.Priority}</td>
-            <td className="py-2 px-3 border-b">{project.Department}</td>
-            <td className="py-2 px-3 border-b">{project.Location}</td>
-            <td className="py-2 px-3 border-b">{project.Division}</td>
-            <td className="py-2 px-3 border-b">{project.status}</td>
-
-            <div className="">
+      <table className="min-w-full bg-white">
+    <thead className="hidden md:table-header-group">
+      <tr className="bg-blue-100">
+        <th className="py-2 px-2 border-b">Project Names</th>
+        <th className="py-2 px-2 border-b">Reason</th>
+        <th className="py-2 px-2 border-b">Category</th>
+        <th className="py-2 px-2 border-b">Type</th>
+        <th className="py-2 px-2 border-b">Priority</th>
+        <th className="py-2 px-2 border-b">Department</th>
+        <th className="py-2 px-2 border-b">Location</th>
+        <th className="py-2 px-2 border-b">Division</th>
+        <th className="py-2 px-2 border-b">Status</th>
+        <th className="py-2 px-2 border-b"></th>
+        <th className="py-2 px-2 border-b"></th>
+        <th className="py-2 px-2 border-b"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {data ? data.map((project) => (
+        <tr key={project._id} className="hidden md:table-row">
+          <td className="py-2 px-3 border-b">
+            <div className="font-bold">{project.ProjectName}</div>
+            <div className="text-sm">
+              <div>{formatDate(project.StartDate)} to {formatDate(project.EndDate)}</div>
+            </div>
+          </td>
+          <td className="py-2 px-3 border-b">{project.Reason}</td>
+          <td className="py-2 px-3 border-b">{project.Category}</td>
+          <td className="py-2 px-3 border-b">{project.Type}</td>
+          <td className="py-2 px-3 border-b">{project.Priority}</td>
+          <td className="py-2 px-3 border-b">{project.Department}</td>
+          <td className="py-2 px-3 border-b">{project.Location}</td>
+          <td className="py-2 px-3 border-b">{project.Division}</td>
+          <td className="py-2 px-3 border-b">{project.status}</td>
+          <td className="py-2 px-3 border-b">
+            <div className="flex space-x-2">
               <button
-                className="p-1 bg-blue-600 m-2  rounded-3xl w-[70px]  text-white border-2"
+                className="p-1 bg-blue-600 rounded-3xl w-[70px] text-white border-2"
                 onClick={() => HandleStatus(project._id, "Running")}
               >
                 Start
               </button>
               <button
-                className="p-1 bg-white m-2 rounded-3xl w-[70px]  text-blue-500 border-2 border-blue-500"
+                className="p-1 bg-white rounded-3xl w-[70px] text-blue-500 border-2 border-blue-500"
                 onClick={() => HandleStatus(project._id, "Closed")}
               >
                 Close
               </button>
               <button
-                className="p-1 bg-white m-2 rounded-3xl w-[70px]  text-blue-500 border-2 border-blue-500"
-                onClick={() => HandleStatus(project._id, "Cancled")}
+                className="p-1 bg-white rounded-3xl w-[70px] text-blue-500 border-2 border-blue-500"
+                onClick={() => HandleStatus(project._id, "Cancelled")}
               >
                 Cancel
               </button>
             </div>
-          </tr>
-        )) : <div className="text-center text-2xl">Loading.....</div>}
-      </tbody>
+          </td>
+        </tr>
+      )) : <div className="text-center text-2xl">No project created yet</div>}
+    </tbody>
+  </table>
+   
+    <div className="md:hidden ">
+      {data ? data.map((project, index) => (
+        <div key={index} className="border rounded-lg p-4 mb-4 bg-white shadow">
+          <div className="font-bold text-lg">{project.ProjectName}</div>
+          <div className="text-sm m-1">{formatDate(project.StartDate)} to {formatDate(project.EndDate)}</div>
+          <div className="text-gray-600"><span className="font-bold">Reason: </span>{project.Reason}</div>
+          <div className="text-gray-600"><span className="font-bold">Category:</span> {project.Category}</div>
+          <div className="text-gray-600"><span className="font-bold">Type:</span> {project.Type}</div>
+          <div className="text-gray-600"><span className="font-bold">Priority:</span> {project.Priority}</div>
+          <div className="text-gray-600"><span className="font-bold">Department:</span> {project.Department}</div>
+          <div className="text-gray-600"><span className="font-bold">Location:</span> {project.Location}</div>
+          <div className="text-gray-600"><span className="font-bold">Division:</span> {project.Division}</div>
+          <div className="text-gray-600"><span className="font-bold">Status:</span>   {project.status}</div>
+          <div className="flex space-x-2 mt-2">
+            <button
+              className="p-1 bg-blue-600 rounded-3xl w-[70px] text-white border-2"
+              onClick={() => HandleStatus(project._id, "Running")}
+            >
+              Start
+            </button>
+            <button
+              className="p-1 bg-white rounded-3xl w-[70px] text-blue-500 border-2 border-blue-500"
+              onClick={() => HandleStatus(project._id, "Closed")}
+            >
+              Close
+            </button>
+            <button
+              className="p-1 bg-white rounded-3xl w-[70px] text-blue-500 border-2 border-blue-500"
+              onClick={() => HandleStatus(project._id, "Cancelled")}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )) : <div className="text-center text-2xl">No project created yet</div>}
+    </div>
+
+    
+
     </>
   );
 }

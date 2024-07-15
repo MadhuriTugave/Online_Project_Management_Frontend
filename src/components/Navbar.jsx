@@ -40,19 +40,22 @@ function Navbar() {
           <img
             src={profile}
             alt="logout"
-            className="w-6 h-6 lg:mt-auto lg:mb-5  cursor-pointer "
+            className="w-6 h-6 lg:mt-auto lg:mb-5  cursor-pointer  "
             onClick={() => setShowProfileOptions(!showProfileOptions)}
           />
         </div>
         {showProfileOptions && (
           <div
-            className=" rounded-xl shadow-xl p-2  "
+            className=" rounded-xl shadow-xl p-2 absolute lg:top-[30rem] md:left-[40rem] md:top-[1rem] lg:left-[-1rem] sm:top-[1rem] sm:right-[5rem] Sm:top-[1rem] Sm:right-[5rem]  text-blue"
+              // position: "absolute",
+              // left: "110px",
+              // bottom: "10px", "
             style={{
-              backgroundColor: "blue",
-              text: "blue",
-              position: "absolute",
-              left: "110px",
-              bottom: "10px",
+              // backgroundColor: "blue",
+              // text: "blue",
+              // position: "absolute",
+              // left: "110px",
+              // bottom: "10px",
             }}
           >
             {access_token ? (

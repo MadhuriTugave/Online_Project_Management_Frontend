@@ -108,106 +108,90 @@ function nextPage(){
 
   return (
     <div className="flex flex-col lg:flex-row h-screen">
-      <div className=" text-white w-full lg:w-20 p-4">
-        <Navbar />
+     <div className=" text-white w-full lg:w-20 p-4 sm:max-h-20 ">
+       <Navbar/>
       </div>
 
-      <div className="flex-grow p-2 lg:ml-6 ">
-        <div className="relative ">
-          <img src={header} className="h-auto max-w-full   " alt="header" />
-          <div className="absolute top-[2rem] justify-center right-[36rem]  " style={{ top: logo }}>
+      <div className="flex-grow p-2 lg:ml-6">
+      <div className="relative">
+        <img src={header} className="h-auto max-w-full" alt="header" />
+        <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[16rem] sm:top-[1rem] Sm:top-[1rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
         <img
           src={logo}
           alt="logo"
-          className="w-20 h-20 object-cover rounded-full bg-blue-500 "
+          className="lg:w-20 lg:h-20 Sm:w-10 Sm:h-10 sm:w-10 sm:h-10 md:w-20 md:h-20 object-cover rounded-full  "
         />
        
       </div>
-          <h1 className=" absolute lg:top-10 left-5 right-0 text-white font-bold text-2xl sm:top-1">
-            Project List{" "}
-          </h1>
+        <h1 className="absolute lg:top-10 left-5 right-0 text-white font-bold text-2xl sm:top-1 Sm:top-1">
+          Project List
+        </h1>
+      </div>
+
+      <div className="flex flex-col absolute bottom-[-5rem] ml-3 bg-white shadow-xl rounded-xl lg:top-[9rem] sm:top-[13rem]  Sm:top-[13rem] p-4">
+        <div className="flex flex-col sm:flex-row Sm:flex-row justify-between mb-2">
+          <div className="flex items-center mb-2 sm:mb-0">
+            <div className="mt-5 p-1 ">
+              <FaSearch />
+            </div>
+            <input
+              type="text"
+              placeholder="Search by project name..."
+              value={searchItem}
+              onChange={(e) => setSearchItem(e.target.value)}
+              className="p-2 border-b-2 rounded-l m-2"
+            />
+          </div>
+          <div className="flex items-center p-3">
+            <label className="p-2 w-[90px]">Sort By</label>
+            <select
+              id="reason"
+              value={sortField}
+              onChange={(e) => setSortField(e.target.value)}
+              className="p-2 border-b-2"
+            >
+              <option>Priority</option>
+              <option>Reason</option>
+              <option>Category</option>
+              <option>Type</option>
+              <option>ProjectName</option>
+              <option>Department</option>
+              <option>Location</option>
+              <option>Division</option>
+              <option>Status</option>
+            </select>
+          </div>
         </div>
 
-        <div className="flex flex-col absolute botton-[-5rem] ml-3 bg-white shadow-xl rounded-xl  top-[9rem]">
-        <div className="flex justify-between  mb-2  ">
-            <div className="flex ">
-              <div className="mt-5 p-1 ">
-                <FaSearch />
-              </div>
-              <input
-                type="text"
-                placeholder="Search by projectname..."
-                value={searchItem}
-                onChange={(e) => setSearchItem(e.target.value)}
-                className="p-2 border-b-2  rounded-l m-2 "
-              />
-            </div>
-            <div className="flex p-3 ">
-              <label className="p-2 w-[90px]">Sort By</label>
-
-              <select
-                id="reason"
-                value={sortField}
-                onChange={(e) => setSortField(e.target.value)}
-                className=" p-2 border-b-2 "
-              >
-                <option>Priority</option>
-                <option>Reason</option>
-                <option>Category </option>
-                <option> Type</option>
-                <option> ProjectName</option>
-                <option> Department</option>
-                <option> Location</option>
-                <option> Division</option>
-                <option> Status</option>
-              </select>
-            </div>
-          </div>
-          <table className="min-w-full bg-white ">
-            
-            <thead>
-              <tr className="bg-blue-100 ">
-                <th className="py-2 px-4 border-b ">Project Names</th>
-                <th className="py-2 px-4 border-b">Reason</th>
-                <th className="py-2 px-4 border-b">Category</th>
-                <th className="py-2 px-3 border-b">Type</th>
-                <th className="py-2 px-4 border-b">Priority</th>
-                <th className="py-2 px-3 border-b">Department</th>
-                <th className="py-2 px-4 border-b">Location</th>
-                <th className="py-2 px-4 border-b">Division</th>
-                <th className="py-2 px-4 border-b">Status</th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
+        {/* <div className=" Sm:block sm:block "> */}
+          
             <Table
-              data={searchResult }
+              data={searchResult}
               onUpdateStatus={handleProjectStatusUpdate}
             />
-          </table>
-          <nav className="m-1">
-            <ul className=" flex item-center justify-center ">
-              <li className="page-item ">
-                <button className="page-link p-2 bg-blue-300"  onClick={prePage}>Prev</button>
-              </li>
-              {
-              numbers.map((n, i)=>{
-               return    <li key={i} className={`page-item p-4   ${currentPage === n ?"active" :""}`}>
-                    <button className="page-link  " onClick={()=>{return changepage(n)}}>
-                      {n}
-                    </button>
-                   </li>
-              })
-              }
-                 <li className="page-item">
-                <button className="page-link p-2 bg-blue-300"  onClick={nextPage}>Next</button>
-              </li>
-            </ul>
-          </nav>
+          {/* </table> */}
+        {/* </div> */}
+       
 
-        </div>
+        <nav className="m-1">
+          <ul className="flex items-center justify-center space-x-2">
+            <li className="page-item">
+              <button className="page-link p-2 bg-blue-300" onClick={prePage}>Prev</button>
+            </li>
+            {numbers.map((n, i) => (
+              <li key={i} className={`page-item p-4 ${currentPage === n ? "active" : ""}`}>
+                <button className="page-link" onClick={() => { return changepage(n) }}>
+                  {n}
+                </button>
+              </li>
+            ))}
+            <li className="page-item">
+              <button className="page-link p-2 bg-blue-300" onClick={nextPage}>Next</button>
+            </li>
+          </ul>
+        </nav>
       </div>
+    </div>
     </div>
   );
 }
