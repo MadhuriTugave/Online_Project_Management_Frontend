@@ -115,7 +115,7 @@ function nextPage(){
       <div className="flex-grow p-2 lg:ml-6">
       <div className="relative">
         <img src={header} className="h-auto max-w-full" alt="header" />
-        <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[16rem] sm:top-[1rem] Sm:top-[1rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
+        <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[11rem] sm:top-[1rem] Sm:top-[1rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
         <img
           src={logo}
           alt="logo"
@@ -128,27 +128,27 @@ function nextPage(){
         </h1>
       </div>
 
-      <div className="flex flex-col absolute bottom-[-5rem] ml-3 bg-white shadow-xl rounded-xl lg:top-[9rem] sm:top-[13rem]  Sm:top-[13rem] p-4">
+      <div className="flex flex-col absolute bottom-[-5rem] ml-2 bg-white shadow-xl rounded-xl lg:top-[9rem] sm:top-[13rem]  Sm:top-[13rem] p-4">
         <div className="flex flex-col sm:flex-row Sm:flex-row justify-between mb-2">
           <div className="flex items-center mb-2 sm:mb-0">
-            <div className="mt-5 p-1 ">
+            <div className="mt-5 p-2 Sm:mt-1 lg:block Sm:hidden ">
               <FaSearch />
             </div>
             <input
               type="text"
-              placeholder="Search by project name..."
+              placeholder="Search project name..."
               value={searchItem}
               onChange={(e) => setSearchItem(e.target.value)}
-              className="p-2 border-b-2 rounded-l m-2"
+              className="p-2 border-b-2 rounded-l m-1 Sm:m-0"
             />
           </div>
-          <div className="flex items-center p-3">
-            <label className="p-2 w-[90px]">Sort By</label>
+          <div className="flex lg:flex-row  Sm:flex-row items-center p-2">
+            <label className="p-1 ">Sort By</label>
             <select
               id="reason"
               value={sortField}
               onChange={(e) => setSortField(e.target.value)}
-              className="p-2 border-b-2"
+              className="p-1 border-b-2"
             >
               <option>Priority</option>
               <option>Reason</option>
@@ -163,14 +163,13 @@ function nextPage(){
           </div>
         </div>
 
-        {/* <div className=" Sm:block sm:block "> */}
+  
           
             <Table
               data={searchResult}
               onUpdateStatus={handleProjectStatusUpdate}
             />
-          {/* </table> */}
-        {/* </div> */}
+         
        
 
         <nav className="m-1">

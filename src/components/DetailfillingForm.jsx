@@ -103,7 +103,7 @@ async  function handleProjectSave (e){
      <div className="flex-grow p-2 lg:ml-7 ">
      <div className="relative">
         <img src={header} className="h-auto max-w-full" alt="header" />
-        <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[16rem] sm:top-[1rem] Sm:top-[1rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
+        <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[11rem] sm:top-[1rem] Sm:top-[1rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
         <img
           src={logo}
           alt="logo"
@@ -117,9 +117,9 @@ async  function handleProjectSave (e){
       </div>
     
     
-     <div className="  lg:w-[1250px]  absolute lg:top-[8rem]  rounded-2xl sm:top-[10rem] ">
+     <div className="  lg:w-[1250px]  absolute lg:top-[8rem]  rounded-2xl sm:top-[10rem] Sm:top-[12rem]">
       
-<form className="mt-2 space-y-8 px-10 py-5 bg-white rounded-xl  shadow-lg shadow-blue-500/50 lg:w-[1200px] " onSubmit={handleProjectSave} >
+<form className="mt-2 space-y-8 px-10 py-5 bg-white rounded-xl  shadow-lg shadow-blue-500/50 lg:w-[1200px] Sm:ml-8 sm:ml-8" onSubmit={handleProjectSave} >
 
   <div className="space-y-4 md:flex md:items-center md:space-y-1 md:space-x-3">
     <Inputfield
