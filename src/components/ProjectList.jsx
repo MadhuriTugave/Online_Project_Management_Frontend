@@ -108,7 +108,7 @@ function nextPage(){
 
   return (
     <div className="flex flex-col lg:flex-row h-screen">
-     <div className=" text-white w-full lg:w-20 p-4 sm:max-h-20 ">
+     <div className=" text-white w-full lg:w-20 lg:p-4  sm:max-h-20 ">
        <Navbar/>
       </div>
 
@@ -123,12 +123,12 @@ function nextPage(){
         />
        
       </div>
-        <h1 className="absolute lg:top-10 left-5 right-0 text-white font-bold text-2xl Sm:text-lg sm:top-1 Sm:top-1">
+        <h1 className="absolute lg:top-10 left-5 right-0 text-white font-bold lg:text-2xl Sm:text-lg sm:top-1 Sm:top-1">
           Project List
         </h1>
       </div>
 
-      <div className="flex flex-col absolute bottom-[-5rem] ml-2 bg-white shadow-xl rounded-xl lg:top-[9rem] sm:top-[13rem]  Sm:top-[13rem] p-4">
+      <div className="flex flex-col absolute bottom-[-5rem] ml-2 bg-white shadow-xl rounded-xl lg:top-[9rem] sm:top-[13rem]  Sm:top-[11rem] p-4">
         <div className="flex flex-col sm:flex-row Sm:flex-row justify-between mb-2">
           <div className="flex items-center   mb-2 sm:mb-0">
             <div className="mt-5 p-1 Sm:mt-1 lg:block Sm:hidden ">

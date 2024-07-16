@@ -49,7 +49,7 @@ function Dashboard() {
 
   return (
     <div className="flex flex-col lg:flex-row  h-screen w-full">
-      <div className=" text-white w-full lg:w-20 p-4 sm:max-h-20 ">
+      <div className=" text-white w-full lg:w-20 lg:p-4 sm:max-h-20 ">
        <Navbar/>
       </div>
       <div className='flex-grow p-2 lg:ml-6'>
@@ -64,16 +64,16 @@ function Dashboard() {
         />
        
       </div>
-        <h1 className='absolute lg:top-10 left-5 right-0 text-white font-bold text-2xl sm:top-1 Sm:top-1 Sm:text-lg'>Dashboard</h1>
+        <h1 className='absolute lg:top-10 left-5 right-0 text-white font-bold lg:text-2xl sm:top-1 Sm:top-1 Sm:text-lg'>Dashboard</h1>
         <div class="flex lg:flex-row justify-around sm:justify-around absolute lg:bottom-[-4rem]  sm:bottom-[-5rem] left-0 right-0 ">
         
-  <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md  sm:h-[80px] sm:w-[180px]'>
-    <div className='w-1 h-[90px] bg-blue-400 flex rounded sm:h-[80px]'>
+  <div className='bg-white shadow-2xl lg:h-[90px] lg:w-[220px] rounded-md  sm:h-[80px] sm:w-[180px] Sm:h-[80px]  Sm:w-[180px]'>
+    <div className='w-1 lg:h-[90px] bg-blue-400 flex rounded Sm:h-[80px]'>
         <div className='lg:text-lg sm:text-sm  ml-3 sm:ml-4'>TotalProjects <span className='text-4xl m-2'>{total }</span></div>
           </div>
          </div>
-         <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md sm:h-[80px] sm:w-[180px] '>
-    <div className='w-1 h-[90px] bg-blue-400 flex rounded sm:h-[80px]'>
+         <div className='bg-white shadow-2xl lg:h-[90px] lg:w-[220px] rounded-md sm:h-[80px] Sm:w-[180px] sm:w-[180px] '>
+    <div className='w-1 lg:h-[90px] bg-blue-400 flex rounded Sm:h-[80px]'>
         <div className='lg:text-lg  ml-3 sm:text-sm'>Closed <span className='text-4xl m-2'>{closed }</span></div>
           </div>
          </div>
@@ -87,8 +87,8 @@ function Dashboard() {
         <div className='lg:text-lg  ml-3 sm:text-sm '>ClosureDelay <span className='text-4xl m-2'>{delay}</span></div>
           </div>
          </div>
-  <div className='bg-white shadow-2xl h-[90px] w-[220px] rounded-md lg:block sm:h-[80px] sm:w-[180px] '>
-         <div className='w-1 h-[90px] sm:h-[80px] bg-blue-400 flex rounded  '>
+  <div className='bg-white shadow-2xl lg:h-[90px] lg:w-[220px] rounded-md lg:block Sm:h-[80px]  Sm:w-[180px] sm:h-[80px]  sm:w-[180px] '>
+         <div className='w-1 lg:h-[90px] Sm:h-[80px] bg-blue-400 flex rounded  '>
             <div className=' lg:text-lg  ml-3 sm:taxt-sm '>Cancelled <span className='text-4xl m-2'>{cancelled}</span></div>
           </div>
   </div>
