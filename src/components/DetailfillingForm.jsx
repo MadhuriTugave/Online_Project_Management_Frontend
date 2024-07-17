@@ -40,7 +40,7 @@ function DetailfillingForm() {
       status &&
       division
     ) {
-      console.log(endDate > startDate);
+      // console.log(endDate > startDate);
       if (endDate > startDate) {
         // console.log("submited")
         try {

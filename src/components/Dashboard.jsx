@@ -10,8 +10,8 @@ function Dashboard() {
  
   const [total ,setTotal] = useState(0);
   const [runningProjects , setRunningProjects]= useState(0);
-  const[closed ,setClosed]=useState(0);
-  const[cancelled ,setCancelled]=useState(0);
+  const [closed ,setClosed]=useState(0);
+  const [cancelled ,setCancelled]=useState(0);
   const [delay , setdelay] = useState(0);
 
 
@@ -27,11 +27,12 @@ function Dashboard() {
         // console.log(response,new Date().toDateString());
     
         const data = response.data;
+        // console.log(data);
        const find = data.filter((project)=> project.status === "Closed");
        const Running = data.filter((project)=> project.status === "Running");
        const filter = data.filter((project)=> project.status === "Running" && project.EndDate < new Date().toDateString()  )
       //  console.log(filter);
-       const cancelled = data.filter((project)=> project.status === "Cancled");
+       const cancelled = data.filter((project)=> project.status === "Cancelled");
 
       setTotal(response.data.length);
         setClosed(find.length);
