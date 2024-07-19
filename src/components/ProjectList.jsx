@@ -29,7 +29,7 @@ function ProjectList() {
               },
             }
           );
-          // console.log(response)
+          console.log(response)
           setData(response.data);
           setSearchResult(response.data);
 
@@ -58,11 +58,18 @@ function ProjectList() {
         // console.log(sortedData);
       }
        if (searchItem) {
-        sortedData = data.filter((project) =>
-          project.ProjectName.includes(searchItem)
-        );
+        const result =  await axios.get(
+          `https://online-project-management-onae.onrender.com/ProjectList/search?query=${searchItem.toString()} `,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            },
+          })
+         
+        sortedData =result.data ;
+      
       }
-      // console.log(sortedData)
+     
       const lastIndex = currentPage * recordsPerPage;
     const firstIndex = lastIndex - recordsPerPage;
     const paginatedData = sortedData.slice(firstIndex, lastIndex);
@@ -76,6 +83,7 @@ function ProjectList() {
 
   const npages = Math.ceil(data.length / recordsPerPage);
   const numbers = [...Array(npages + 1).keys()].slice(1);
+  
 
  
   function prePage(){
@@ -107,12 +115,12 @@ function nextPage(){
 
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen">
-     <div className=" text-white w-full lg:w-20 lg:p-4  sm:max-h-20 ">
-       <Navbar/>
-      </div>
+    <div className="flex flex-col lg:flex-row  h-screen w-full">
+    <div className=" text-white w-full lg:w-20 lg:p-4 sm:max-h-20 ">
+     <Navbar/>
+    </div>
 
-      <div className="flex-grow p-2 lg:ml-6">
+      <div className="flex-grow p-1 lg:ml-3">
       <div className="relative">
         <img src={header} className="h-auto max-w-full" alt="header" />
         <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[10rem] sm:top-[1rem] Sm:top-[0rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
@@ -123,12 +131,12 @@ function nextPage(){
         />
        
       </div>
-        <h1 className="absolute lg:top-10 left-5 right-0 text-white font-bold lg:text-2xl Sm:text-lg sm:top-1 Sm:top-1">
-          Project List
+        <h1 className="absolute lg:top-10 left-5 right-0 text-white font-bold lg:text-xl Sm:text-lg sm:top-1 Sm:top-1">
+          Project Listing
         </h1>
       </div>
 
-      <div className="flex flex-col absolute bottom-[-5rem] ml-2 bg-white shadow-xl rounded-xl lg:top-[9rem] sm:top-[13rem]  Sm:top-[11rem] p-4">
+      <div className="flex flex-col    absolute bottom-[-5rem]  bg-white  rounded-xl lg:top-[8rem] sm:top-[13rem]  Sm:top-[11rem] p-4">
         <div className="flex flex-col sm:flex-row Sm:flex-row justify-between mb-2">
           <div className="flex items-center   mb-2 sm:mb-0">
             <div className="mt-5 p-1 Sm:mt-1 lg:block Sm:hidden ">

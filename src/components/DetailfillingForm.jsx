@@ -93,12 +93,12 @@ function DetailfillingForm() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen">
-      <div className=" text-white w-full lg:w-20 lg:p-4  sm:max-h-20 ">
-        <Navbar />
+   <div className="flex flex-col lg:flex-row  h-screen w-full">
+      <div className=" text-white w-full lg:w-20 lg:p-4 sm:max-h-20 ">
+       <Navbar/>
       </div>
 
-      <div className="flex-grow p-2 lg:ml-7 ">
+      <div className="flex p-1 lg:ml-3 ">
         <div className="relative">
           <img src={header} className="h-auto max-w-full" alt="header" />
           <div
@@ -116,25 +116,26 @@ function DetailfillingForm() {
           </h1>
         </div>
 
-        <div className="  lg:w-[1250px]  absolute lg:top-[8rem]  rounded-2xl sm:top-[10rem] Sm:top-[9rem]">
+        <div className=" flex justify-center items-center   lg:w-[1100px] md:w-[800px] sm:w-[700px] Sm:w-[400px]  absolute lg:top-[8rem]  rounded-2xl sm:top-[10rem] Sm:top-[9rem] md:top-[12rem] ">
           <form
-            className="mt-3 space-y-8 px-20 py-5 bg-white rounded-xl  lg:shadow-lg shadow-blue-500/50 lg:w-[1200px]  Sm:ml-8 sm:ml-8 flex Sm:flex-col lg:flex-row"
+            className=" space-y-5 px-5 py-5 bg-white rounded-xl  lg:shadow-lg shadow-blue-500/50 flex  lg:flex-row      Sm:flex-col  "
             onSubmit={handleProjectSave}
           >
-            <div>
+            <div className=" flex   md:flex-col sm:flex-col Sm:flex-col md:justify-center md:items-center sm:justify-center   Sm:justify-center Sm:items-center ">
+            <div className="w-full ">
               <div>
-                <Inputfield
+                <textarea
                   id="theme"
                   type="text"
                   placeholder="Enter Project Theme..."
                   value={theme}
                   onChange={(e) => setTheme(e.target.value)}
-                  className="w-full p-3 border border-indigo-600 border-black rounded-lg md:flex-1  "
+                  className="w-full p-3 border border-black border-black rounded-lg md:flex-1  "
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="space-y-3">
+              <div className="grid grid-cols-1 sm:grid-col-2 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+                <div className="space-y-4 mt-5 Sm:mt-2 sm:mt-2">
                   <label className="block ">
                     Reason
                     <select
@@ -156,7 +157,7 @@ function DetailfillingForm() {
                       id="category3"
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full p-3 border rounded-lg border-black"
+                      className="min-w-full p-3 border rounded-lg border-black"
                     >
                       <option>Select Category</option>
                       <option>QualityA</option>
@@ -178,7 +179,7 @@ function DetailfillingForm() {
                   </label>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-4 mt-5 Sm:mt-2 sm:mt-2">
                   <label className="block">
                     Type
                     <select
@@ -222,7 +223,7 @@ function DetailfillingForm() {
                   </label>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-4 mt-5 Sm:mt-2 sm:mt-2">
                   <label className="block">
                     Location
                     <select
@@ -286,10 +287,13 @@ function DetailfillingForm() {
                 </label>
               </div>
             </div>
-            <div className=" lg:ml-20 ">
+           
+            </div>
+           
+            <div className="flex lg:block  lg:m-3 md:block Sm:justify-center Sm:items-center sm:justify-center sm:items-center  top-0">
               <button
                 type="submit"
-                className="w-full md:w-auto md:flex-none  rounded-lg text-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 p-3"
+                className="lg:w-[150px] w-[140px] sm:mt-4  rounded-full text-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 p-1"
               >
                 Save Project
               </button>

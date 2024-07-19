@@ -30,13 +30,11 @@ function TableData({ data, onUpdateStatus }) {
       console.log(error);
     }
   }
-  const HandleStatus = (projectId, Status) => {
-    UpdateStatus(projectId, Status);
-  };
+
   return (
     <>
       <table className="min-w-full bg-white">
-    <thead className="hidden md:table-header-group">
+    <thead className="hidden lg:table-header-group ">
       <tr className="bg-blue-100">
         <th className="py-2 px-2 border-b">Project Names</th>
         <th className="py-2 px-2 border-b">Reason</th>
@@ -54,7 +52,7 @@ function TableData({ data, onUpdateStatus }) {
     </thead>
     <tbody>
       {data ? data.map((project) => (
-        <tr key={project._id} className="hidden md:table-row">
+        <tr key={project._id} className="hidden lg:table-row">
           <td className="py-2 px-3 border-b">
             <div className="font-bold">{project.ProjectName}</div>
             <div className="text-sm">
@@ -73,19 +71,19 @@ function TableData({ data, onUpdateStatus }) {
             <div className="flex space-x-2">
               <button
                 className="p-1 bg-blue-600 rounded-3xl w-[70px] text-white border-2"
-                onClick={() => HandleStatus(project._id, "Running")}
+                onClick={() => UpdateStatus(project._id, "Running")}
               >
                 Start
               </button>
               <button
                 className="p-1 bg-white rounded-3xl w-[70px] text-blue-500 border-2 border-blue-500"
-                onClick={() => HandleStatus(project._id, "Closed")}
+                onClick={() => UpdateStatus(project._id, "Closed")}
               >
                 Close
               </button>
               <button
                 className="p-1 bg-white rounded-3xl w-[70px] text-blue-500 border-2 border-blue-500"
-                onClick={() => HandleStatus(project._id, "Cancelled")}
+                onClick={() => UpdateStatus(project._id, "Cancelled")}
               >
                 Cancel
               </button>
@@ -96,9 +94,9 @@ function TableData({ data, onUpdateStatus }) {
     </tbody>
   </table>
    
-    <div className="md:hidden ">
+    <div className="flex flex-col items-center lg:hidden ">
       {data ? data.map((project, index) => (
-        <div key={index} className="border rounded-lg p-4 mb-4 bg-white shadow">
+        <div key={index} className="border rounded-lg p-4 mb-4 bg-white shadow w-full md:w-4/4 lg:w-1/2 ">
           <div className="font-bold text-lg">{project.ProjectName}</div>
           <div className="text-sm m-1">{formatDate(project.StartDate)} to {formatDate(project.EndDate)}</div>
           <div className="text-gray-600"><span className="font-bold">Reason: </span>{project.Reason}</div>
@@ -109,22 +107,22 @@ function TableData({ data, onUpdateStatus }) {
           <div className="text-gray-600"><span className="font-bold">Location:</span> {project.Location}</div>
           <div className="text-gray-600"><span className="font-bold">Division:</span> {project.Division}</div>
           <div className="text-gray-600"><span className="font-bold">Status:</span>   {project.status}</div>
-          <div className="flex space-x-2 mt-2">
+          <div className="flex space-x-2 mt-2 justify-center">
             <button
               className="p-1 bg-blue-600 rounded-3xl w-[70px] text-white border-2"
-              onClick={() => HandleStatus(project._id, "Running")}
+              onClick={() => UpdateStatus(project._id, "Running")}
             >
               Start
             </button>
             <button
               className="p-1 bg-white rounded-3xl w-[70px] text-blue-500 border-2 border-blue-500"
-              onClick={() => HandleStatus(project._id, "Closed")}
+              onClick={() => UpdateStatus(project._id, "Closed")}
             >
               Close
             </button>
             <button
               className="p-1 bg-white rounded-3xl w-[70px] text-blue-500 border-2 border-blue-500"
-              onClick={() => HandleStatus(project._id, "Cancelled")}
+              onClick={() => UpdateStatus(project._id, "Cancelled")}
             >
               Cancel
             </button>

@@ -19,26 +19,26 @@ function Dashboard() {
     async function getList (){
       try {
       
-        const response = await axios.get(`https://online-project-management-onae.onrender.com/ProjectList`,{
+        const response = await axios.get(`https://online-project-management-onae.onrender.com/ProjectList/CardValues`,{
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
         });
-        // console.log(response,new Date().toDateString());
-    
-        const data = response.data;
-        // console.log(data);
-       const find = data.filter((project)=> project.status === "Closed");
-       const Running = data.filter((project)=> project.status === "Running");
-       const filter = data.filter((project)=> project.status === "Running" && project.EndDate < new Date().toDateString()  )
-      //  console.log(filter);
-       const cancelled = data.filter((project)=> project.status === "Cancelled");
+     
+       
+       console.log(response);
+      const data =response.data
+      const total_Projects = data.map(item => item.total_Projects);
+      const total_Closed = data.map(item => item.total_Closed);  
+      const total_Running = data.map(item => item.total_Running); 
+      const total_Cancelled = data.map(item => item.total_Cancelled); 
 
-      setTotal(response.data.length);
-        setClosed(find.length);
-        setRunningProjects(Running.length);
-        setCancelled(cancelled.length);
-        setdelay(filter.length);
+      const total_delay = data.map(item => item.total_delay); 
+      setTotal(total_Projects);
+        setClosed(total_Closed);
+        setRunningProjects(total_Running);
+        setCancelled(total_Cancelled);
+        setdelay(total_delay);
       
       } catch (error) {
         console.log(error);
@@ -53,11 +53,11 @@ function Dashboard() {
       <div className=" text-white w-full lg:w-20 lg:p-4 sm:max-h-20 ">
        <Navbar/>
       </div>
-      <div className='flex-grow p-2 lg:ml-6'>
+      <div className='flex-grow p-1 lg:ml-3'>
       {/* <div className="flex-grow "> */}
        <div className='relative '>
         <img src={header} alt='headingimage' className='h-auto max-w-full  '></img>
-        <div className="absolute lg:top-[2rem] justify-center lg:right-[36rem] sm:right-[16rem] Sm:right-[10rem] sm:top-[1rem] Sm:top-[0rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
+        <div className="absolute lg:top-[2rem] justify-center  lg:right-[36rem] sm:right-[16rem] Sm:right-[10rem] sm:top-[1rem] Sm:top-[0rem] md:right-[28rem] md:top-[1rem]  " style={{ top: logo }}>
         <img
           src={logo}
           alt="logo"
@@ -78,8 +78,8 @@ function Dashboard() {
         <div className='lg:text-lg  ml-3 sm:text-sm'>Closed <span className='text-4xl m-2'>{closed }</span></div>
           </div>
          </div>
-         <div className='bg-white shadow-2xl h-[90px] w-[220px]  rounded-md sm:hidden lg:block Sm:hidden '>
-    <div className='w-1 h-[90px] bg-blue-400 flex rounded'>
+         <div className='bg-white shadow-2xl h-[90px] w-[220px] lg:h-[90px] lg:w-[220px] md:h-[80px] md:w-[190px]  rounded-md sm:hidden lg:block Sm:hidden md:block '>
+    <div className='w-1 lg:h-[90px] md:h-[80px] bg-blue-400 flex rounded'>
         <div className='lg:text-lg  ml-3 sm:text-sm '>Running <span className='text-4xl m-2'>{runningProjects }</span></div>
           </div>
          </div>

@@ -1,0 +1,22 @@
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+    /* width: 100%;
+    height: auto; */
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 8;
+    left: 10;
+    /* width: 20px;
+    height: 20px; */
+    background-color:blue ;/* Replace with your desired color */
+    /* mix-blend-mode: multiply; This will blend the color with the image */
+    /* pointer-events: none; Ensure the overlay does not interfere with interactions */
+}

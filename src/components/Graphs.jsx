@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 function Graphs() {
     const user = useSelector((state) => state);
-    const id =user.LoginLogoutUser.user._id;
+    const id = user.LoginLogoutUser.user._id;
     const [chartOptions, setChartOptions] = useState({
         chart: {
             type: 'column'
@@ -75,7 +75,7 @@ function Graphs() {
 
   return (
     <div className='lg:w-[500px] Sm:w-[400px] absolute lg:bottom-[-3rem] shadow-2xl md:bottom-[-2rem]  sm:bottom-[-5rem] Sm:bottom-[-3rem]  '>
-      
+     
       <HighchartsReact
                 highcharts={Highcharts}
                 options={chartOptions}
