@@ -22,14 +22,14 @@ function Dashboard() {
     async function getList (){
       try {
       
-        const response = await axios.get(`http://localhost:3001/ProjectList/CardValues`,{
+        const response = await axios.get(`https://online-project-management-onae.onrender.com/ProjectList/CardValues`,{
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
         });
      
        
-       console.log(response);
+      //  console.log(response);
       const data =response.data
       const total_Projects = data.map(item => item.total_Projects);
       const total_Closed = data.map(item => item.total_Closed);  

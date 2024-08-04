@@ -12,7 +12,7 @@ function ForgotPassword() {
     if(email){
         try {
             const response = await axios.post(
-                `http://localhost:3001/User/ForgotPassword`,
+                `https://online-project-management-onae.onrender.com/User/ForgotPassword`,
                 { email}
               ); 
               console.log(response);

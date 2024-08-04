@@ -17,7 +17,7 @@ export default function ResetPassword() {
     if(Password){
         try {
             const response = await axios.post(
-                `http://localhost:3001/User/reset_Password/${id}/${token}`,
+                `https://online-project-management-onae.onrender.com/User/reset_Password/${id}/${token}`,
                 { Password}
               ); 
               // console.log(response.data);

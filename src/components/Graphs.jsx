@@ -63,7 +63,7 @@ function Graphs() {
     });
     useEffect(() => {
       async  function getGraphData (){
-            await axios.get(`http://localhost:3001/ProjectList/department`,{
+            await axios.get(`https://online-project-management-onae.onrender.com/ProjectList/department`,{
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 },

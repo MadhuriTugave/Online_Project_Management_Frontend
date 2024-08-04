@@ -28,7 +28,7 @@ function ProjectList() {
       try {
       // setLoading(true)
           const response = await axios.get(
-            `http://localhost:3001/ProjectList`,
+            `https://online-project-management-onae.onrender.com/ProjectList`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
@@ -65,7 +65,7 @@ function ProjectList() {
       }
        if (searchItem) {
         const result =  await axios.get(
-          `http://localhost:3001/ProjectList/search?query=${searchItem.toString()} `,
+          `https://online-project-management-onae.onrender.com/ProjectList/search?query=${searchItem.toString()} `,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("access_token")}`,
