@@ -1,0 +1,46 @@
+#my-svg {
+    width: 100%;
+    height: auto;
+}
+
+/* Styles for small devices */
+@media (max-width: 767px) {
+    #my-svg {
+        width:1366px; 
+        height:1000px;
+    }
+
+    /* Specific styles for the mask and oval for small devices */
+    #my-svg #mask-5 {
+        width: 55px; /* Adjust width as needed */
+        height: 360px; /* Adjust height as needed */
+    }
+
+    #my-svg #Oval ellipse {
+        cx: 400; /* Adjust x-coordinate as needed */
+        cy: 150; /* Adjust y-coordinate as needed */
+        rx: 345; /* Adjust radius-x as needed */
+        ry: 150; /* Adjust radius-y as needed */
+    }
+}
+
+/* Styles for large devices */
+@media (min-width: 768px) {
+    #my-svg {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Specific styles for the mask and oval for large devices */
+    #my-svg #mask-5 {
+        width: 360%; /* Adjust width as needed */
+        height: 55%; /* Adjust height as needed */
+    }
+
+    #my-svg #Oval ellipse {
+        cx: 811.5; /* Adjust x-coordinate as needed */
+        cy: 345; /* Adjust y-coordinate as needed */
+        rx: 323.5; /* Adjust radius-x as needed */
+        ry: 313; /* Adjust radius-y as needed */
+    }
+}

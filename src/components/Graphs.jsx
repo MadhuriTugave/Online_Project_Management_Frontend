@@ -3,42 +3,67 @@ import HighchartsReact from 'highcharts-react-official';
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import { useSelector } from 'react-redux';
+import "../image.css"
 
 function Graphs() {
     const user = useSelector((state) => state);
     const id = user.LoginLogoutUser.user._id;
     const [chartOptions, setChartOptions] = useState({
         chart: {
-            type: 'column'
+            type: 'column',
+            backgroundColor: 'white',
+            plotBackgroundColor: 'white',
+          
+           
+    
         },
         title: {
-            text: 'Department Wise-Total Vs Closed '
+            text: ''
         },
         xAxis: {
+           
+            //   Persentage : [],
             categories: [],
-            crosshair: true
+            crosshair: true,
         },
         yAxis: {
             min: 0,
-            tickPositions: [0, 5, 10, 15, 20],
+            tickPositions: [],
+           
             title: {
-                text: 'Number of Projects',
+                text: '',
 
             }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.3,
+                groupPadding: 0.2,
+                dataLabels: {
+                    enabled: true,
+                    color: 'black', // Set the color of the labels
+                    
+                }
+            },
+           
+           
         },
         series: [{
             name: 'Total Registered',
             data: [],
-            color: 'blue' 
+            color: 'blue',
+
+           
         }, {
             name: 'Total Closed',
             data: [],
-            color: 'green' 
+            color: 'green' ,
+            
         }]
     });
     useEffect(() => {
       async  function getGraphData (){
-            await axios.get(`https://online-project-management-onae.onrender.com/ProjectList/department`,{
+            await axios.get(`http://localhost:3001/ProjectList/department`,{
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 },
@@ -49,19 +74,43 @@ function Graphs() {
                     const categories = data.map(item => item.department);
                     // console.log(categories);
                     const totalRegistered = data.map(item => item.total_registered);
+                    // console.log(totalRegistered)
                     const totalClosed = data.map(item => item.total_closed);
-    
+                // console.log(totalClosed)
+                const completionPercentages = totalRegistered.map((value, index) => {
+                    const closed = totalClosed[index];
+                    return value === 0 ? 0 : Math.round((closed / value) * 100);
+                });
+                console.log(completionPercentages)
                     setChartOptions({
+                        chart: {
+                            type: 'column',
+                            backgroundColor: 'white',
+                            plotBackgroundColor: 'white',
+                        },
                         xAxis: {
-                            categories: categories,
-                            crosshair: true
+                            // Persentage : completionPercentages.map((item)=>`${item}+% `),
+                            categories: categories.map((el)=> el.substr(0, 3).toUpperCase()),
+                    //  crosshair: true
+                        },
+                        yAxis: {
+                            min: 0,
+                            tickPositions: [0, 5, 10, 15, 20],
+                          
+                            title: {
+                                text: '',
+                
+                            },
+                            
                         },
                         series: [{
-                            name: 'Total Registered',
-                            data: totalRegistered
+                            name: 'Total ',
+                            data: totalRegistered,
+                            value:totalClosed.map((item)=> item)
                         }, {
-                            name: 'Total Closed',
+                            name: ' Closed',
                             data: totalClosed,
+                            value:totalRegistered.map((item)=> item)
                     
                         }]
                     });
@@ -74,11 +123,12 @@ function Graphs() {
     }, [id]);
 
   return (
-    <div className='lg:w-[500px] Sm:w-[400px] absolute lg:bottom-[-3rem] shadow-2xl md:bottom-[-2rem]  sm:bottom-[-5rem] Sm:bottom-[-3rem]  '>
+    <div className='lg:ml-3 Sm:ml-2 bg-white Sm:rectangle   lg:w-[600px] Sm:w-[340px] md:w-[500px] absolute lg:top-[3rem]  md:bottom-[-2rem]  shadow-lg  sm:bottom-[-5rem] Sm:top-[3rem]  '>
      
       <HighchartsReact
                 highcharts={Highcharts}
                 options={chartOptions}
+               
             />
     </div>
   )

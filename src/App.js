@@ -7,12 +7,14 @@ import ProjectList from './components/ProjectList';
 import DetailfillingForm from './components/DetailfillingForm';
 import SignUp from './components/SignUp';
 import { Toaster } from 'react-hot-toast';
-import { store } from './Redux/store';
+
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
 
 
 
 function App() {
- console.log(store)
+
   return (
     <>
       <Toaster/>
@@ -23,7 +25,8 @@ function App() {
       <Route path='/Dashboard' element={<Dashboard/>}></Route>
     <Route path='/ProjectList' element={<ProjectList/>}></Route>
     <Route path='/Create' element={<DetailfillingForm/>} />
-
+    <Route path='/ForgotPassword' element={<ForgotPassword/>} />
+    <Route path='/reset_Password/:id/:token' element={<ResetPassword/>} />
     </Routes>
     </>
   );

@@ -3,7 +3,7 @@ import Inputfield from "./inputfield";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import logoTop from "../Images/Logo.jpg";
+import logoTop from "../Images/Logo (4).svg";
 import { useDispatch } from "react-redux";
 import { SetUser } from "../Redux/Actions";
 import bgImage from "../Images/login-bg-1.jpg";

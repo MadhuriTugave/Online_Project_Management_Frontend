@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import logoTop from "../Images/Logo.jpg";
+import { Link, useNavigate } from "react-router-dom";
+import logoTop from "../Images/Logo (4).svg";
 
 import { useDispatch } from "react-redux";
 import { SetUser } from "../Redux/Actions";
-import bgImage from "../Images/login-bg-1.jpg"
+import bgImage from "../Images/login-bg-1 (1).svg"
 import show from "../Images/show.jpg";
 import hide from "../Images/hide.jpg";
+import "../image.css"
 // import bg2 from "../Images/Logo-Photoroom.jpg"
 
 
@@ -41,13 +42,13 @@ function Login() {
   const handleLogin = async (e) => {
     // Prevent the default form submission
     e.preventDefault();
-    // console.log(email , password)
+    // console.log(email , password);
 
 
   
       if (email === "") {
         setEmailError("Email is required  ");
-      }
+      } 
     if (password === "") {
       setPasswordError("password is required ");
      }
@@ -57,7 +58,7 @@ function Login() {
   
         try {
           const response = await axios.post(
-            `https://online-project-management-onae.onrender.com/User/Login`,
+            `http://localhost:3001/User/Login`,
             { email, password }
           );
           console.log(response.data);
@@ -74,6 +75,7 @@ function Login() {
           setTimeout(() => {
             navigate("/Dashboard");
           }, 1000);
+       
         } catch (error) {
           // console.log(error)
           // toast.error(error.response.data.message);
@@ -89,33 +91,42 @@ function Login() {
   const handlePasssword=()=>{
     setPasswordVisible(!passwordVisible);
   }
+  
 
   return (
-    <div className="h-[500px] flex flex-col lg:justify-center items-center relative ">
+    <div className="h-full flex flex-col lg:justify-center  items-center relative ">
     <div className="absolute">
         <img src={bgImage} alt="header"/>
       </div>
-      <div className="absolute top-[5rem] justify-center  " style={{ top: logoTop }}>
-        <img
+      <div className="absolute lg:top-[5rem] Sm:top-[5rem] justify-center image-wrapper " style={{ top: logoTop }}>
+      
+        {/* <img
           src={logoTop}
           alt="logo"
-          className="w-20 h-20  rounded-full"
-        />
+          className="h-2 w-20 object-cover rounded-full "
+        >
+         
+        </img> */}
+         <div class="logo relative ">
+        <img src={logoTop} alt="Logo" class="logo-image"/>
+      
+        
+    </div>
        
       </div>
-    <div className="absolute top-[12rem] justify-center text-white" >
-    <h6>Onling Project Management</h6>
+    <div className="absolute lg:top-[11rem] text-md Sm:top-[11rem] text-stone-200" >
+    Onling Project Management
     </div>
-      <div className="rounded-3xl bg-white p-8 sm:shadow-3xl  max-w-[420px] w-full shadow-xl absolute top-[15rem]">
-        <h1 className="text-xl text-black mb-9 text-center ">
-          Login To Get started
+      <div className="rounded-xl bg-white lg:p-8 Sm:p-4  max-w-[410px] w-full shadow-xl  absolute lg:top-[14rem]  Sm:top-[18rem] sm:top-[30rem]">
+        <h1 className=" text-xl lg:mt-2 text-gray-700 font-[20px] lg:mb-9  Sm:text-left lg:text-center ">
+          Login to get started
         </h1>
         {/* Login Form */}
-        <form onSubmit={handleLogin} className="space-y-5 mt-10">
+        <form onSubmit={handleLogin} className="space-y-5 lg:mt-10 Sm:mt-5 ">
           {/* Email Address Input Field*/}
-          <div className="relative w-full flex flex-col justify-between ">
-         {/* <div className="mt-3 "> */}
-         <lable className={Emailerror ? "text-red-500 " :"text-black-500 "}>Email
+          <div className="relative w-full flex flex-col justify-between">
+         {/* <div className={Emailerror ? "mt-3 :"mt-10" }> */}
+         <lable className={Emailerror ? "text-red-500 " :"text-stone-500 text-sm "}>Email
           <input
             id="email"
             type="email"
@@ -127,12 +138,12 @@ function Login() {
           </lable>
          {/* </div> */}
          {
-            Emailerror ? <h6 className="text-red-500 text-md">{Emailerror}</h6> :<h6> </h6>
+            Emailerror ? <h6 className="text-red-500 text-md">{Emailerror}</h6> :<h6 className=""> </h6>
           }
           {/* Password Input Field*/}
      
-          <div className={Passworderror ? "mt-4" :"mt-10 "}>
-            <lable className={Passworderror ? "text-red-500" :"text-black-500 "}>password
+          <div className={Passworderror ? " relative mt-4" :"  relative mt-10 "}>
+            <lable className={Passworderror ? "text-red-500" :"text-stone-500 text-sm  "}>Password
         <input
             id="password"
             type={passwordVisible ? "text" :"password"}
@@ -145,22 +156,28 @@ function Login() {
        {
             Passworderror ? <h6 className="text-red-500 text-md">{Passworderror}</h6> :<h6> </h6> 
           }
-          
-             </lable>
-           <button onClick={handlePasssword} type="button">
+        
+        <button onClick={handlePasssword} type="button">
            {
-            passwordVisible? ( <img src={hide} alt="hide" className="absolute h-9 w-9 top-[9rem] right-3"/>):
-            (<img src={show} alt="show" className="absolute h-10 w-10 top-[9rem] right-3 rounded-full"/>)
+            passwordVisible? ( <img src={hide} alt="hide" className={Passworderror  ? "absolute h-9 w-9 bottom-[50px] right-3" : "absolute h-9 w-9 bottom-[30px] right-3"}/>):
+            (<img src={show} alt="show" className={Passworderror ?"absolute h-10 w-10 bottom-[50px] right-3 rounded-full": "absolute h-10 w-10 bottom-[30px] right-3 rounded-full"}/>)
            }
           </button>
+          
+             </lable>
+       
+           
+          
+          <Link className={Passworderror ? `absolute right-3 text-xs text-blue-500 bottom-[28px]` :`absolute right-3 text-xs text-blue-500 bottom-[9px]`} to="/ForgotPassword">Forgot Password?</Link>
+         </div> 
+
+        
+    
          
-     
-         </div>
-         
-         <div className={Passworderror ? "mt-4 flex justify-center " :"mt-10 flex justify-center   "}>
+         <div className={Passworderror && Emailerror ? " flex justify-center  " :"mt-6 flex justify-center   "}>
          <button
             type="submit"
-            className="w-[160px] rounded-full text-body-m  text-lg bg-blue-500 hover:bg-blue-300  transition-duration-300 p-1"
+            className=" mt-3 w-full lg:w-[180px]  rounded-full text-white text-body-m  text-lg bg-blue-600 hover:bg-blue-500  transition-duration-300 p-1"
             formNoValidate
           >
             Login
@@ -180,7 +197,7 @@ function Login() {
           
         </div>
       </div>
-      <div className="absolute bottom-[-15rem] p-10 h-20 w-200  ">
+      <div className="absolute lg:bottom-[-44rem] lg:left-[35rem] p-10 h-20 w-200 sm:bottom-[-58rem] sm:left-[24rem]  Sm:bottom-[-37rem] Sm:left-[-1rem]">
       {
          
             error ? <h6 className="text-red-500 ">{error}</h6>:" "
